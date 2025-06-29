@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ai-product-matching"
+version = "0.1.0"
+description = "Product matching pipeline using VLMs, Vector DBs, MongoDB, and Triton"
+authors = ["Saran Jaya Thilak <saranjthilak@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+fastapi = "*"
+pymongo = "*"
+numpy = "*"
+faiss-cpu = "*"
+torch = "*"
+torchvision = "*"
+tritonclient = "*"
+gradio = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
