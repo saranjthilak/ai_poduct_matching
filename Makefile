@@ -1,33 +1,11 @@
-setup:
-	poetry install
-
 run:
-	python scripts/start_pipeline.py
+	poetry run python app/demo_gradio.py
 
 load-data:
-	python scripts/load_embeddings.py
+	poetry run python scripts/load_embeddings.py
 
-demo:
-	python app/demo_gradio.py
+start-pipeline:
+	poetry run python scripts/start_pipeline.py
 
-docker-build:
-	docker-compose buisetup:
-	poetry install
-
-run:
-	python scripts/start_pipeline.py
-
-load-data:
-	python scripts/load_embeddings.py
-
-demo:
-	python app/demo_gradio.py
-
-docker-build:
-	docker-compose build
-
-docker-up:
-	docker-compose upld
-
-docker-up:
-	docker-compose up
+lint:
+	black . && isort .
