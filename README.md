@@ -46,16 +46,48 @@ This project demonstrates an **end-to-end product matching system** that:
 ## 🧩 Project Structure
 ```plaintext
 ai-product-matching/
-├── app/                # Gradio demo interface
-├── docker/             # Dockerfile
-├── mongo_store/        # MongoDB interface
-├── sample_data/        # Mock product metadata, embeddings, and images
-├── scripts/            # Data loaders and pipeline starters
-├── triton_models/      # Mock Triton model configs
-├── vector_db/          # Vector DB interface
-├── Makefile            # Convenient CLI commands
-├── pyproject.toml      # Poetry dependencies
-├── docker-compose.yml  # Multi-container orchestration
+├── app/                     # Gradio or FastAPI demo interface
+│   └── ui.py
+│
+├── docker/                  # Dockerfile & entrypoints
+│   └── Dockerfile
+│
+├── mongo_store/             # MongoDB interface
+│   ├── database.py          # Handles product & log storage
+│   └── __init__.py
+│
+├── sample_data/             # Example product data
+│   ├── products.json
+│   ├── embeddings.npy
+│   └── images/
+│       └── ...
+│
+├── scripts/                 # Utility scripts and pipeline runners
+│   ├── export_clip_onnx.py       # ✅ Export vision/text encoders to ONNX
+│   ├── quantize_tensorrt.py      # ✅ Optional: Quantize via TensorRT Python API
+│   └── start_pipeline.py        # Main product matching logic
+│
+├── triton_models/           # Model repo for NVIDIA Triton
+│   ├── clip_vision/
+│   │   ├── 1/
+│   │   │   └── model.plan       # ✅ TensorRT engine (FP16 or INT8)
+│   │   └── config.pbtxt
+│   │
+│   └── clip_text/           # Optional: if text encoder also quantized
+│       ├── 1/
+│       │   └── model.plan
+│       └── config.pbtxt
+│
+├── vector_db/               # Vector DB logic (FAISS-based)
+│   ├── faiss_engine.py
+│   └── __init__.py
+│
+├── .env                     # ✅ Mongo URI and other secrets
+├── Makefile                 # Convenience CLI
+├── pyproject.toml           # Poetry dependencies
+├── docker-compose.yml       # ✅ Triton + Mongo + Your App (to be added)
+└── README.md
+
 ```
 ## ⚙️ Setup Instructions
 
@@ -101,10 +133,3 @@ make docker-up
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE) © 2025 Saran Jaya Thilak
-
-
-
-
-
-
-
