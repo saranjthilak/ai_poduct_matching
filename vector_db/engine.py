@@ -1,60 +1,45 @@
+import json
 import numpy as np
 import faiss
-import os
 from typing import List, Dict
+import os
 
 
 class FaissVectorEngine:
-    def __init__(self, dim: int, index_path: str = "vector_db/product_index.faiss"):
-        """
-        Args:
-            dim (int): Dimension of embeddings.
-            index_path (str): File path to save/load FAISS index.
-        """
+    def __init__(self, dim: int, index_path: str = "vector_db/product_index.faiss", meta_path: str = "vector_db/products.json"):
         self.dim = dim
         self.index_path = index_path
+        self.meta_path = meta_path
         self.index = faiss.IndexFlatL2(dim)
         self.products: List[Dict] = []
 
     def index_data(self, embeddings: np.ndarray, products: List[Dict]):
-        """
-        Add embeddings and associated product metadata to FAISS index.
-
-        Args:
-            embeddings (np.ndarray): shape (n_samples, dim)
-            products (List[Dict]): metadata for each sample
-        """
         if embeddings.shape[1] != self.dim:
             raise ValueError(f"Embedding dim mismatch. Expected {self.dim}, got {embeddings.shape[1]}")
 
-        faiss.normalize_L2(embeddings)  # Optional normalization
+        faiss.normalize_L2(embeddings)
         self.index.add(embeddings)
         self.products = products
 
-        # Save FAISS index
         faiss.write_index(self.index, self.index_path)
+        with open(self.meta_path, "w", encoding="utf-8") as f:
+            json.dump(self.products, f, ensure_ascii=False, indent=2)
         print(f"✅ FAISS index saved to {self.index_path}")
+        print(f"✅ Products metadata saved to {self.meta_path}")
 
     def load(self):
-        """
-        Load FAISS index from disk.
-        """
-        if not os.path.exists(self.index_path):
-            raise FileNotFoundError("FAISS index not found.")
+        if not os.path.exists(self.index_path) or not os.path.exists(self.meta_path):
+            raise FileNotFoundError("FAISS index or product metadata not found.")
         self.index = faiss.read_index(self.index_path)
-        print("✅ FAISS index loaded.")
+        with open(self.meta_path, "r", encoding="utf-8") as f:
+            self.products = json.load(f)
+        print("✅ FAISS index and products metadata loaded.")
 
     def search(self, query_embedding: np.ndarray, top_k: int = 5) -> List[Dict]:
-        """
-        Search top_k similar items using FAISS.
+        if self.index.ntotal == 0:
+            print("⚠️ FAISS index is empty. Add embeddings before searching.")
+            return []
 
-        Args:
-            query_embedding (np.ndarray): shape (dim,)
-            top_k (int): number of results
-
-        Returns:
-            List[Dict]: top matched products
-        """
         if query_embedding.ndim == 1:
             query_embedding = query_embedding[np.newaxis, :]
         faiss.normalize_L2(query_embedding)

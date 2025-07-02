@@ -44,21 +44,38 @@ class MongoDB:
 
     def insert_products(self, products: List[Dict]):
         """
-        Insert multiple products into 'products' collection.
+        Clear existing products and insert new ones.
 
         Args:
             products (List[Dict]): List of product dicts.
         """
         try:
+            # Clear existing products first
+            deleted_count = self.products.delete_many({}).deleted_count
+            print(f"Cleared {deleted_count} existing products.")
+
+            # Insert new products
             self.products.insert_many(products, ordered=False)
             print(f"Inserted {len(products)} products successfully.")
         except Exception as e:
             print(f"Error inserting products: {e}")
             self.log_event({"type": "error", "message": str(e)})
 
+    def get_product_by_id(self, product_id: str) -> Optional[Dict]:
+        """
+        Retrieve a product by its unique 'id'.
+
+        Args:
+            product_id (str): Product unique id.
+
+        Returns:
+            Dict or None: Product document or None if not found.
+        """
+        return self.products.find_one({"id": product_id})
+
     def get_product_by_index(self, idx: int) -> Optional[Dict]:
         """
-        Retrieve a product by its index or custom field.
+        Retrieve a product by its index or custom field 'index'.
 
         Args:
             idx (int): Product index.
@@ -79,6 +96,53 @@ class MongoDB:
             List[Dict]: List of product documents.
         """
         return list(self.products.find(filter_dict))
+
+    def find_products_by_category(self, category: str) -> List[Dict]:
+        """
+        Find products by category.
+
+        Args:
+            category (str): Category name.
+
+        Returns:
+            List[Dict]: List of product documents.
+        """
+        return list(self.products.find({"category": category}))
+
+    def update_product(self, product_id: str, update_fields: Dict) -> bool:
+        """
+        Update a product's fields.
+
+        Args:
+            product_id (str): Product unique id.
+            update_fields (Dict): Fields to update.
+
+        Returns:
+            bool: True if updated, False otherwise.
+        """
+        try:
+            result = self.products.update_one({"id": product_id}, {"$set": update_fields})
+            return result.modified_count > 0
+        except Exception as e:
+            self.log_event({"type": "error", "message": str(e)})
+            return False
+
+    def delete_product(self, product_id: str) -> bool:
+        """
+        Delete a product by its id.
+
+        Args:
+            product_id (str): Product unique id.
+
+        Returns:
+            bool: True if deleted, False otherwise.
+        """
+        try:
+            result = self.products.delete_one({"id": product_id})
+            return result.deleted_count > 0
+        except Exception as e:
+            self.log_event({"type": "error", "message": str(e)})
+            return False
 
     def log_event(self, event: Dict):
         """

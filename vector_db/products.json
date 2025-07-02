@@ -1,0 +1,65 @@
+[
+  {
+    "index": 0,
+    "id": "prod_001",
+    "name": "Wireless Ergonomic Mouse",
+    "category": "Electronics",
+    "price": 25.99,
+    "image": "mouse1.jpg",
+    "description": "Ergonomic wireless mouse with adjustable DPI and long battery life."
+  },
+  {
+    "index": 1,
+    "id": "prod_002",
+    "name": "Gaming Mouse",
+    "category": "Electronics",
+    "price": 45.5,
+    "image": "mouse2.jpg",
+    "description": "RGB gaming mouse with programmable buttons and high precision sensor."
+  },
+  {
+    "index": 2,
+    "id": "prod_003",
+    "name": "Ultrabook Laptop",
+    "category": "Computers",
+    "price": 999.0,
+    "image": "laptop1.jpg",
+    "description": "Lightweight ultrabook with 16GB RAM and 512GB SSD."
+  },
+  {
+    "index": 3,
+    "id": "prod_004",
+    "name": "Gaming Laptop",
+    "category": "Computers",
+    "price": 1450.75,
+    "image": "laptop2.jpg",
+    "description": "High performance gaming laptop with NVIDIA RTX graphics and 32GB RAM."
+  },
+  {
+    "index": 4,
+    "id": "prod_005",
+    "name": "Running Shoes",
+    "category": "Footwear",
+    "price": 120.0,
+    "image": "shoe1.jpg",
+    "description": "Lightweight running shoes with breathable mesh and cushioned soles."
+  },
+  {
+    "index": 5,
+    "id": "prod_006",
+    "name": "Wireless Headphones",
+    "category": "Audio",
+    "price": 89.99,
+    "image": "headphones1.jpg",
+    "description": "Over-ear wireless headphones with noise cancellation and 20 hours battery."
+  },
+  {
+    "index": 6,
+    "id": "prod_007",
+    "name": "Smart Watch",
+    "category": "Wearables",
+    "price": 199.99,
+    "image": "watch1.jpg",
+    "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
+  }
+]

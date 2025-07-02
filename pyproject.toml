@@ -14,10 +14,16 @@ numpy = "^1.24"
 faiss-cpu = "^1.7"
 tritonclient = "^2.41"
 gradio = "^4.25"
-torch = "^2.1.0"
-torchvision = "^0.16.0"
-transformers = "4.28.1"
+transformers = "^4.41.0"
 python-dotenv = "^1.1.1"
+
+tensorrt = {version = "*", optional = true}
+pillow = "10.3.0"
+requests = "^2.32.4"
+sentence-transformers = "^5.0.0"
+
+[tool.poetry.extras]
+tensorrt = ["tensorrt"]
 
 [build-system]
 requires = ["poetry-core"]

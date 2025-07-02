@@ -38,3 +38,4 @@ poetry.lock
 # Data
 sample_data/embeddings.npy
 sample_data/images/
+CLIP/
