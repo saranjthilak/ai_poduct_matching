@@ -1,9 +1,10 @@
 import tensorrt as trt
 import os
+import argparse
 
 TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 
-def build_engine(onnx_file_path: str, engine_file_path: str, fp16_mode: bool = True):
+def build_engine(onnx_file_path: str, engine_file_path: str, input_name: str, input_shapes: tuple, fp16_mode: bool = True):
     if not os.path.exists(onnx_file_path):
         raise FileNotFoundError(f"ONNX file not found: {onnx_file_path}")
 
@@ -31,11 +32,11 @@ def build_engine(onnx_file_path: str, engine_file_path: str, fp16_mode: bool = T
     # Create optimization profile for dynamic shapes
     profile = builder.create_optimization_profile()
 
-    # Assuming your model input name is "input_image" (check with Netron or model summary)
-    # You need to specify min, opt, max shapes for each dynamic input dimension
-    profile.set_shape("input_image", (1, 3, 224, 224), (4, 3, 224, 224), (8, 3, 224, 224))
+    # Unpack input_shapes: (min_shape, opt_shape, max_shape)
+    min_shape, opt_shape, max_shape = input_shapes
+    profile.set_shape(input_name, min_shape, opt_shape, max_shape)
 
-    # Add the profile to config
+    # Add profile to config
     config.add_optimization_profile(profile)
 
     # Build serialized engine
@@ -50,8 +51,31 @@ def build_engine(onnx_file_path: str, engine_file_path: str, fp16_mode: bool = T
 
     print(f"✅ Engine saved to {engine_file_path}")
 
-if __name__ == "__main__":
-    ONNX_PATH = "onnx_models/clip_vision.onnx"
-    ENGINE_PATH = "triton_models/clip_vision/1/model.plan"
 
-    build_engine(ONNX_PATH, ENGINE_PATH, fp16_mode=True)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Build TensorRT engine from ONNX")
+    parser.add_argument("--onnx", type=str, required=True, help="Path to ONNX model")
+    parser.add_argument("--engine", type=str, required=True, help="Output path for TensorRT engine")
+    parser.add_argument("--model_type", type=str, choices=["vision", "text"], required=True, help="Model type: vision or text")
+    parser.add_argument("--fp16", action="store_true", help="Enable FP16 mode")
+
+    args = parser.parse_args()
+
+    if args.model_type == "vision":
+        input_name = "input_image"
+        # (min_batch, channels, height, width), etc
+        input_shapes = (
+            (1, 3, 224, 224),  # min
+            (4, 3, 224, 224),  # opt
+            (8, 3, 224, 224),  # max
+        )
+    else:  # text
+        input_name = "input_text"
+        # (min_batch, seq_len), etc
+        input_shapes = (
+            (1, 77),  # min
+            (4, 77),  # opt
+            (8, 77),  # max
+        )
+
+    build_engine(args.onnx, args.engine, input_name, input_shapes, fp16_mode=args.fp16)

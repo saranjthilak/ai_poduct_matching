@@ -21,6 +21,8 @@ tensorrt = {version = "*", optional = true}
 pillow = "10.3.0"
 requests = "^2.32.4"
 sentence-transformers = "^5.0.0"
+clip = {git = "https://github.com/openai/CLIP.git"}
+onnx = "^1.18.0"
 
 [tool.poetry.extras]
 tensorrt = ["tensorrt"]
