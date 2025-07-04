@@ -61,5 +61,41 @@
     "price": 199.99,
     "image": "watch1.jpg",
     "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
+  },
+  {
+    "index": 7,
+    "id": "prod_008",
+    "name": "DSLR Camera",
+    "category": "Cameras",
+    "price": 599.00,
+    "image": "camera1.jpg",
+    "description": "DSLR camera with 24MP sensor and 4K video recording."
+  },
+  {
+    "index": 8,
+    "id": "prod_009",
+    "name": "Mirrorless Camera",
+    "category": "Cameras",
+    "price": 799.00,
+    "image": "camera2.jpg",
+    "description": "Compact mirrorless camera with interchangeable lens and Wi-Fi support."
+  },
+  {
+    "index": 9,
+    "id": "prod_010",
+    "name": "Hiking Shoes",
+    "category": "Footwear",
+    "price": 140.00,
+    "image": "shoe2.jpg",
+    "description": "Durable hiking shoes with waterproof material and rugged grip."
+  },
+  {
+    "index": 10,
+    "id": "prod_011",
+    "name": "Camera Lens 50mm",
+    "category": "Accessories",
+    "price": 250.00,
+    "image": "lens1.jpg",
+    "description": "Prime 50mm camera lens with f/1.8 aperture, perfect for portraits."
   }
 ]

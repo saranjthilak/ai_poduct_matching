@@ -1,16 +1,13 @@
 # === Paths ===
 ONNX_DIR=onnx_models
-ENGINE_DIR_VISION=triton_models/clip_vision/1
-ENGINE_DIR_TEXT=triton_models/clip_text/1
+ENGINE_DIR=triton_models/clip_vision/1
 TRITON_REPO=triton_models
-
 VISION_ONNX=$(ONNX_DIR)/clip_vision.onnx
 TEXT_ONNX=$(ONNX_DIR)/clip_text.onnx
+VISION_ENGINE=$(ENGINE_DIR)/model.plan
+TEXT_ENGINE=triton_models/clip_text/1/model.plan
 
-VISION_ENGINE=$(ENGINE_DIR_VISION)/model.plan
-TEXT_ENGINE=$(ENGINE_DIR_TEXT)/model.plan
-
-.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean
+.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings
 
 ## Export CLIP vision & text encoders to ONNX
 export_onnx:
@@ -19,28 +16,32 @@ export_onnx:
 
 ## Quantize ONNX to TensorRT engine for both vision and text (FP16)
 quantize_trt:
-	@echo "⚙️ Quantizing vision encoder with TensorRT (FP16) via Python script..."
-	poetry run python scripts/quantize_tensorrt.py --onnx $(VISION_ONNX) --engine $(VISION_ENGINE) --model_type vision --fp16
+	@echo "⚙️ Quantizing CLIP vision encoder to TensorRT..."
+	poetry run python scripts/quantize_tensorrt.py --onnx $(VISION_ONNX) --engine $(VISION_ENGINE) --fp16
+	@echo "⚙️ Quantizing CLIP text encoder to TensorRT..."
+	poetry run python scripts/quantize_tensorrt.py --onnx $(TEXT_ONNX) --engine $(TEXT_ENGINE) --fp16
 
-	@echo "⚙️ Quantizing text encoder with TensorRT (FP16) via Python script..."
-	poetry run python scripts/quantize_tensorrt.py --onnx $(TEXT_ONNX) --engine $(TEXT_ENGINE) --model_type text --fp16
-
-## Start Triton Inference Server, MongoDB, and any other services from docker-compose.yml
+## Start Triton Inference Server and MongoDB
 start_triton:
 	@echo "🚀 Starting Triton Inference Server and MongoDB containers..."
-	docker-compose up -d
+	docker compose up -d
 
-## Stop all running containers started by docker-compose
+## Stop all running containers
 stop_triton:
 	@echo "🛑 Stopping all containers..."
-	docker-compose down
+	docker compose down
 
-## Run the product matching pipeline script
-run_pipeline:
+## Generate embeddings from product images
+generate_embeddings:
+	@echo "🧠 Generating image embeddings..."
+	PYTHONPATH=$(PWD) poetry run python scripts/load_embeddings.py
+
+## Run the product matching pipeline (depends on embeddings)
+run_pipeline: generate_embeddings
 	@echo "🔍 Running product matching pipeline..."
-	poetry run python scripts/start_pipeline.py
+	PYTHONPATH=$(PWD) poetry run python scripts/start_pipeline.py
 
-## Clean generated ONNX and TensorRT engine files
+## Clean generated ONNX and engine files
 clean:
-	rm -rf $(ONNX_DIR) $(ENGINE_DIR_VISION)/model.plan $(ENGINE_DIR_TEXT)/model.plan
+	rm -rf $(ONNX_DIR) $(VISION_ENGINE) $(TEXT_ENGINE)
 	@echo "🧹 Cleaned ONNX and TensorRT engine files."
