@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   triton:
+    container_name: triton_server
     image: nvcr.io/nvidia/tritonserver:24.03-py3
     runtime: nvidia
     environment:
@@ -14,13 +15,26 @@ services:
       - "8000:8000"  # HTTP
       - "8001:8001"  # gRPC
       - "8002:8002"  # Metrics
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/v2/health/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   mongodb:
+    container_name: mongodb
     image: mongo:6
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mongodb_data:

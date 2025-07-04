@@ -39,3 +39,9 @@ poetry.lock
 sample_data/embeddings.npy
 sample_data/images/
 CLIP/
+
+# TensorRT engine files
+*.plan
+
+# Triton model binaries
+triton_models/
