@@ -17,19 +17,19 @@ export_onnx:
 ## Quantize ONNX to TensorRT engine for both vision and text (FP16)
 quantize_trt:
 	@echo "⚙️ Quantizing CLIP vision encoder to TensorRT..."
-	poetry run python scripts/quantize_tensorrt.py --onnx $(VISION_ONNX) --engine $(VISION_ENGINE) --fp16
+	poetry run python scripts/quantize_tensorrt.py --onnx $(VISION_ONNX) --engine $(VISION_ENGINE) --model_type vision --fp16
 	@echo "⚙️ Quantizing CLIP text encoder to TensorRT..."
-	poetry run python scripts/quantize_tensorrt.py --onnx $(TEXT_ONNX) --engine $(TEXT_ENGINE) --fp16
+	poetry run python scripts/quantize_tensorrt.py --onnx $(TEXT_ONNX) --engine $(TEXT_ENGINE) --model_type text --fp16
 
 ## Start Triton Inference Server and MongoDB
 start_triton:
 	@echo "🚀 Starting Triton Inference Server and MongoDB containers..."
-	docker compose up -d
+	sudo docker compose up -d
 
 ## Stop all running containers
 stop_triton:
 	@echo "🛑 Stopping all containers..."
-	docker compose down
+	sudo docker compose down
 
 ## Generate embeddings from product images
 generate_embeddings:
