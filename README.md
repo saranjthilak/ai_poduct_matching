@@ -38,6 +38,11 @@ The repo comes with:
 ## 🔗 Live Demo
 
 > Optionally hosted via Gradio.
+## 🖼️ Demo Screenshot
+
+Below is a screenshot of the Gradio-powered Product Matching UI in action:
+
+![Product Matching Demo UI](assets/ui_demo.png)
 > To try locally, run:
 ```bash
 poetry run python app/ui.py
