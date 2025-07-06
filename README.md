@@ -49,10 +49,10 @@ v                             v
 
 ```
 ai-product-matching/
-├── app/                    # Web application and API
-│   ├── api/               # FastAPI endpoints
-│   ├── ui/                # Gradio interface
-│   └── main.py            # Application entry point
+├── app/                    # Gradio application
+│   ├── main.py            # Gradio interface and main app
+│   ├── matching.py        # Product matching logic
+│   └── utils.py           # Utility functions
 ├── config/                 # Configuration files
 │   ├── model_config.yaml  # Model configurations
 │   └── server_config.yaml # Server configurations
@@ -89,7 +89,8 @@ ai-product-matching/
 │   ├── unit/              # Unit tests
 │   ├── integration/       # Integration tests
 │   └── performance/       # Performance tests
-├── requirements.txt       # Python dependencies
+├── pyproject.toml         # Poetry dependencies and config
+├── poetry.lock           # Poetry lock file
 ├── docker-compose.yml     # Container orchestration
 ├── Makefile              # Build and run commands
 └── README.md             # This file
@@ -103,6 +104,7 @@ ai-product-matching/
 - **Database**: MongoDB
 - **Model Serving**: NVIDIA Triton Inference Server
 - **UI**: Gradio
+- **Package Management**: Poetry
 - **Containerization**: Docker, Docker Compose
 - **Caching**: Redis (optional)
 
@@ -111,6 +113,7 @@ ai-product-matching/
 ### Prerequisites
 
 - Python 3.8+
+- Poetry (for dependency management)
 - Docker and Docker Compose
 - NVIDIA GPU (for TensorRT acceleration)
 - NVIDIA Container Toolkit
@@ -118,19 +121,21 @@ ai-product-matching/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ai-product-matching.git
-cd ai-product-matching
+git clone https://github.com/saranjthilak/ai_poduct_matching.git
+cd ai_poduct_matching
 ```
 
 ### 2. Environment Setup
 
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Install Poetry (if not already installed)
+curl -sSL https://install.python-poetry.org | python3 -
 
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies with Poetry
+poetry install
+
+# Activate virtual environment
+poetry shell
 ```
 
 ### 3. Configuration
@@ -150,7 +155,7 @@ cp .env.example .env
 docker-compose up --build
 
 # Access the application
-# - Web UI: http://localhost:8080
+# - Gradio UI: http://localhost:7860
 # - API: http://localhost:8000
 # - Triton Server: http://localhost:8001
 ```
@@ -168,57 +173,29 @@ docker run --gpus all -d -p 8001:8001 -p 8002:8002 -p 8000:8000 \
   tritonserver --model-repository=/models
 
 # Initialize sample data
-python scripts/setup_data.py
+poetry run python scripts/setup_data.py
 
-# Start the application
-python -m app.main
+# Start the Gradio application
+poetry run python app/main.py
 ```
 
 ## 📊 Usage
 
-### Web Interface
+### Gradio Web Interface
 
-1. Open your browser to `http://localhost:8080`
-2. Upload a product image
-3. Click "Find Similar Products"
-4. View the matched results with similarity scores
+1. Start the application with `poetry run python app/main.py`
+2. Open your browser to `http://localhost:7860`
+3. Upload a product image using the file uploader
+4. Click "Find Similar Products" button
+5. View the matched results with similarity scores and product details
 
-### API Usage
+The Gradio interface provides:
+- **Image Upload**: Drag and drop or click to upload product images
+- **Results Display**: Visual grid showing matched products with scores
+- **Product Details**: Name, category, price, and similarity percentage
+- **Interactive Interface**: Real-time processing and results
 
-```python
-import requests
-import base64
 
-# Encode image
-with open("product_image.jpg", "rb") as f:
-    image_data = base64.b64encode(f.read()).decode()
-
-# Make API request
-response = requests.post(
-    "http://localhost:8000/api/v1/match",
-    json={
-        "image": image_data,
-        "top_k": 5,
-        "threshold": 0.7
-    }
-)
-
-matches = response.json()
-print(f"Found {len(matches)} similar products")
-```
-
-### CLI Usage
-
-```bash
-# Match products via command line
-python -m app.cli match --image path/to/image.jpg --top-k 5
-
-# Benchmark performance
-python scripts/benchmark.py --dataset sample_data/test_images/
-
-# Validate model accuracy
-python scripts/validate.py --ground-truth sample_data/ground_truth.json
-```
 
 ## 🔧 Model Management
 
@@ -226,10 +203,10 @@ python scripts/validate.py --ground-truth sample_data/ground_truth.json
 
 ```bash
 # Export models to ONNX
-python models/export/export_clip.py --model openai/clip-vit-base-patch32
+poetry run python models/export/export_clip.py --model openai/clip-vit-base-patch32
 
 # Quantize with TensorRT
-python models/quantization/quantize_tensorrt.py \
+poetry run python models/quantization/quantize_tensorrt.py \
   --model models/clip_vision.onnx \
   --precision fp16 \
   --output triton_models/clip_vision/1/model.plan
@@ -254,52 +231,11 @@ python models/quantization/quantize_tensorrt.py \
 | Throughput | ~100 queries/sec |
 | Memory Usage | ~2GB GPU |
 
-### Optimization Tips
 
-1. **Batch Processing**: Process multiple images together
-2. **Caching**: Enable Redis for frequent queries
-3. **GPU Optimization**: Use TensorRT INT8 for maximum speed
-4. **Load Balancing**: Deploy multiple Triton instances
 
-## 🧪 Testing
 
-```bash
-# Run all tests
-make test
 
-# Run specific test categories
-make test-unit
-make test-integration
-make test-performance
 
-# Run with coverage
-make test-coverage
-```
-
-## 🔍 Monitoring
-
-### Logging
-
-- Application logs: `logs/app.log`
-- Triton server logs: `logs/triton.log`
-- MongoDB logs: Available via MongoDB tools
-
-### Metrics
-
-- Inference time tracking
-- Search accuracy metrics
-- System resource usage
-- Error rate monitoring
-
-### Health Checks
-
-```bash
-# Check service health
-curl http://localhost:8000/health
-
-# Check model status
-curl http://localhost:8001/v2/health/ready
-```
 
 ## 🚀 Deployment
 
@@ -317,29 +253,9 @@ curl http://localhost:8001/v2/health/ready
    docker-compose -f docker-compose.prod.yml up -d
    ```
 
-3. **Kubernetes Deployment**:
-   ```bash
-   kubectl apply -f k8s/
-   ```
 
-### Scaling
 
-- **Horizontal**: Deploy multiple API instances behind a load balancer
-- **Vertical**: Increase GPU memory and compute resources
-- **Database**: Use MongoDB sharding for large datasets
 
-## 🛡️ Security
-
-- Input validation for all API endpoints
-- Rate limiting to prevent abuse
-- Secure MongoDB connection with authentication
-- Container security scanning
-
-## 📚 API Documentation
-
-Once the server is running, access the interactive API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
 
 ## 🤝 Contributing
 
@@ -377,15 +293,11 @@ echo $MONGO_URI
 - Check GPU memory usage
 - Enable batching in Triton configuration
 
-## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/ai-product-matching/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/ai-product-matching/discussions)
-- **Documentation**: [Wiki](https://github.com/yourusername/ai-product-matching/wiki)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
@@ -394,15 +306,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FAISS](https://github.com/facebookresearch/faiss) for efficient similarity search
 - [MongoDB](https://www.mongodb.com/) for flexible data storage
 
-## 🎯 Roadmap
 
-- [ ] Multi-language support
-- [ ] Real-time model updates
-- [ ] Advanced filtering options
-- [ ] Mobile app integration
-- [ ] A/B testing framework
-- [ ] Advanced analytics dashboard
 
 ---
 
-**Built with ❤️ by [Saran Jaya Thilak**
+**Built with ❤️ by Saran Jaya Thilak**
