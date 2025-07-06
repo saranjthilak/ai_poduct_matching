@@ -8,22 +8,23 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
-fastapi = "^0.110"
+fastapi = ">=0.115.2,<1.0"
 pymongo = "^4.13"
 numpy = "^1.24"
 faiss-cpu = "1.7.4"  # pin exact stable release
 tritonclient = {version = "^2.59.0", extras = ["grpc"]}
-gradio = "^4.25"
+gradio = "5.27.0"
 transformers = "^4.41.0"
 python-dotenv = "^1.1.1"
 pillow = "10.3.0"
 requests = "^2.32.4"
 sentence-transformers = "^2.2.2"  # lighter version, check if compatible
-clip = {git = "https://github.com/openai/CLIP.git", rev = "v1.0"} # pin a tag if possible
+clip = { git = "https://github.com/openai/CLIP.git", branch = "main" } # pin a tag if possible
 onnx = "^1.18.0"
 
 # Optional TensorRT for acceleration
 tensorrt = {version = "==8.5.3.1", optional = true}
+gradio-client = "1.9.0"
 
 [tool.poetry.extras]
 tensorrt = ["tensorrt"]

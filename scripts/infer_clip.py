@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 
 TRITON_URL = "http://localhost:8000/v2/models/clip_vision/infer"
-IMAGE_PATH = "testimage.jpg"  # 🔁 Replace this
+IMAGE_PATH = "testimage2.jpg"  # 🔁 Replace this
 
 def preprocess_image(image_path):
     image = Image.open(image_path).convert("RGB")

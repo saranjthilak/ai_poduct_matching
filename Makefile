@@ -10,8 +10,9 @@ TEXT_ONNX=$(ONNX_DIR)/clip_text.onnx
 VISION_ENGINE=$(ENGINE_DIR)/model.plan
 TEXT_ENGINE=triton_models/clip_text/1/model.plan
 
-.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings
+.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings demo help
 
+## Run full pipeline
 all: run_pipeline
 
 ## Export CLIP vision & text encoders to ONNX
@@ -46,7 +47,17 @@ run_pipeline: generate_embeddings
 	@echo "🔍 Running product matching pipeline..."
 	PYTHONPATH=$(PWD) poetry run python scripts/start_pipeline.py
 
+## Launch Gradio demo UI
+demo:
+	@echo "🎛️ Launching Gradio interface..."
+	PYTHONPATH=$(PWD) poetry run python app/ui.py
+
 ## Clean generated ONNX and engine files
 clean:
+	@echo "🧹 Cleaning ONNX and TensorRT engine files..."
 	rm -rf $(ONNX_DIR) $(VISION_ENGINE) $(TEXT_ENGINE)
-	@echo "🧹 Cleaned ONNX and TensorRT engine files."
+
+## Help: list all make targets
+help:
+	@echo "Available targets:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
