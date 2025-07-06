@@ -1,101 +1,317 @@
 [
   {
     "index": 0,
-    "id": "prod_001",
+    "id": "mouse_001",
     "name": "Wireless Ergonomic Mouse",
-    "category": "Electronics",
+    "category": "Mouse",
     "price": 25.99,
     "image": "mouse1.jpg",
     "description": "Ergonomic wireless mouse with adjustable DPI and long battery life."
   },
   {
     "index": 1,
-    "id": "prod_002",
+    "id": "mouse_002",
     "name": "Gaming Mouse",
-    "category": "Electronics",
+    "category": "Mouse",
     "price": 45.50,
     "image": "mouse2.jpg",
     "description": "RGB gaming mouse with programmable buttons and high precision sensor."
   },
   {
     "index": 2,
-    "id": "prod_003",
+    "id": "mouse_003",
+    "name": "Bluetooth Travel Mouse",
+    "category": "Mouse",
+    "price": 18.99,
+    "image": "mouse3.jpg",
+    "description": "Compact Bluetooth mouse perfect for travel with foldable design."
+  },
+  {
+    "index": 3,
+    "id": "mouse_004",
+    "name": "Vertical Ergonomic Mouse",
+    "category": "Mouse",
+    "price": 39.99,
+    "image": "mouse4.jpg",
+    "description": "Vertical mouse design reduces wrist strain with natural hand position."
+  },
+  {
+    "index": 4,
+    "id": "mouse_005",
+    "name": "Wireless Silent Mouse",
+    "category": "Mouse",
+    "price": 22.50,
+    "image": "mouse5.jpg",
+    "description": "Silent click wireless mouse ideal for quiet environments and offices."
+  },
+  {
+    "index": 5,
+    "id": "laptop_001",
     "name": "Ultrabook Laptop",
-    "category": "Computers",
+    "category": "Laptop",
     "price": 999.00,
     "image": "laptop1.jpg",
     "description": "Lightweight ultrabook with 16GB RAM and 512GB SSD."
   },
   {
-    "index": 3,
-    "id": "prod_004",
+    "index": 6,
+    "id": "laptop_002",
     "name": "Gaming Laptop",
-    "category": "Computers",
+    "category": "Laptop",
     "price": 1450.75,
     "image": "laptop2.jpg",
     "description": "High performance gaming laptop with NVIDIA RTX graphics and 32GB RAM."
   },
   {
-    "index": 4,
-    "id": "prod_005",
+    "index": 7,
+    "id": "laptop_003",
+    "name": "Business Laptop",
+    "category": "Laptop",
+    "price": 849.99,
+    "image": "laptop3.jpg",
+    "description": "Professional business laptop with security features and 14-inch display."
+  },
+  {
+    "index": 8,
+    "id": "laptop_004",
+    "name": "2-in-1 Convertible Laptop",
+    "category": "Laptop",
+    "price": 749.99,
+    "image": "laptop4.jpg",
+    "description": "Versatile 2-in-1 laptop with touchscreen and 360-degree hinge."
+  },
+  {
+    "index": 9,
+    "id": "laptop_005",
+    "name": "Budget Student Laptop",
+    "category": "Laptop",
+    "price": 399.99,
+    "image": "laptop5.jpg",
+    "description": "Affordable laptop perfect for students with 8GB RAM and 256GB SSD."
+  },
+  {
+    "index": 10,
+    "id": "shoes_001",
     "name": "Running Shoes",
-    "category": "Footwear",
+    "category": "Shoes",
     "price": 120.00,
     "image": "shoe1.jpg",
     "description": "Lightweight running shoes with breathable mesh and cushioned soles."
   },
   {
-    "index": 5,
-    "id": "prod_006",
-    "name": "Wireless Headphones",
-    "category": "Audio",
-    "price": 89.99,
-    "image": "headphones1.jpg",
-    "description": "Over-ear wireless headphones with noise cancellation and 20 hours battery."
-  },
-  {
-    "index": 6,
-    "id": "prod_007",
-    "name": "Smart Watch",
-    "category": "Wearables",
-    "price": 199.99,
-    "image": "watch1.jpg",
-    "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
-  },
-  {
-    "index": 7,
-    "id": "prod_008",
-    "name": "DSLR Camera",
-    "category": "Cameras",
-    "price": 599.00,
-    "image": "camera1.jpg",
-    "description": "DSLR camera with 24MP sensor and 4K video recording."
-  },
-  {
-    "index": 8,
-    "id": "prod_009",
-    "name": "Mirrorless Camera",
-    "category": "Cameras",
-    "price": 799.00,
-    "image": "camera2.jpg",
-    "description": "Compact mirrorless camera with interchangeable lens and Wi-Fi support."
-  },
-  {
-    "index": 9,
-    "id": "prod_010",
+    "index": 11,
+    "id": "shoes_002",
     "name": "Hiking Shoes",
-    "category": "Footwear",
+    "category": "Shoes",
     "price": 140.00,
     "image": "shoe2.jpg",
     "description": "Durable hiking shoes with waterproof material and rugged grip."
   },
   {
-    "index": 10,
-    "id": "prod_011",
+    "index": 12,
+    "id": "shoes_003",
+    "name": "Casual Sneakers",
+    "category": "Shoes",
+    "price": 85.00,
+    "image": "shoe3.jpg",
+    "description": "Comfortable casual sneakers with classic design and all-day comfort."
+  },
+  {
+    "index": 13,
+    "id": "shoes_004",
+    "name": "Athletic Cross-Training Shoes",
+    "category": "Shoes",
+    "price": 95.00,
+    "image": "shoe4.jpg",
+    "description": "Versatile cross-training shoes for gym workouts and fitness activities."
+  },
+  {
+    "index": 14,
+    "id": "shoes_005",
+    "name": "Walking Shoes",
+    "category": "Shoes",
+    "price": 110.00,
+    "image": "shoe5.jpg",
+    "description": "Supportive walking shoes with arch support and shock absorption."
+  },
+  {
+    "index": 15,
+    "id": "camera_001",
+    "name": "DSLR Camera",
+    "category": "Camera",
+    "price": 599.00,
+    "image": "camera1.jpg",
+    "description": "DSLR camera with 24MP sensor and 4K video recording."
+  },
+  {
+    "index": 16,
+    "id": "camera_002",
+    "name": "Mirrorless Camera",
+    "category": "Camera",
+    "price": 799.00,
+    "image": "camera2.jpg",
+    "description": "Compact mirrorless camera with interchangeable lens and Wi-Fi support."
+  },
+  {
+    "index": 17,
+    "id": "camera_003",
+    "name": "Action Camera",
+    "category": "Camera",
+    "price": 299.99,
+    "image": "camera3.jpg",
+    "description": "Waterproof action camera with 4K recording and image stabilization."
+  },
+  {
+    "index": 18,
+    "id": "camera_004",
+    "name": "Instant Camera",
+    "category": "Camera",
+    "price": 149.99,
+    "image": "camera4.jpg",
+    "description": "Retro instant camera that prints photos immediately with vintage filters."
+  },
+  {
+    "index": 19,
+    "id": "camera_005",
+    "name": "Point-and-Shoot Camera",
+    "category": "Camera",
+    "price": 249.99,
+    "image": "camera5.jpg",
+    "description": "Compact point-and-shoot camera with 20x optical zoom and auto-focus."
+  },
+  {
+    "index": 20,
+    "id": "lens_001",
     "name": "Camera Lens 50mm",
-    "category": "Accessories",
+    "category": "Lens",
     "price": 250.00,
     "image": "lens1.jpg",
     "description": "Prime 50mm camera lens with f/1.8 aperture, perfect for portraits."
+  },
+  {
+    "index": 21,
+    "id": "lens_002",
+    "name": "Wide Angle Lens 24mm",
+    "category": "Lens",
+    "price": 320.00,
+    "image": "lens2.jpg",
+    "description": "Ultra-wide 24mm lens ideal for landscape and architectural photography."
+  },
+  {
+    "index": 22,
+    "id": "lens_003",
+    "name": "Telephoto Lens 85mm",
+    "category": "Lens",
+    "price": 450.00,
+    "image": "lens3.jpg",
+    "description": "Professional 85mm telephoto lens with excellent bokeh for portraits."
+  },
+  {
+    "index": 23,
+    "id": "lens_004",
+    "name": "Macro Lens 60mm",
+    "category": "Lens",
+    "price": 380.00,
+    "image": "lens4.jpg",
+    "description": "Macro lens for extreme close-up photography with 1:1 magnification."
+  },
+  {
+    "index": 24,
+    "id": "lens_005",
+    "name": "Zoom Lens 24-70mm",
+    "category": "Lens",
+    "price": 599.00,
+    "image": "lens5.jpg",
+    "description": "Versatile zoom lens covering wide-angle to portrait focal lengths."
+  },
+  {
+    "index": 25,
+    "id": "watch_001",
+    "name": "Smart Watch",
+    "category": "Watch",
+    "price": 199.99,
+    "image": "watch1.jpg",
+    "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
+  },
+  {
+    "index": 26,
+    "id": "watch_002",
+    "name": "Fitness Tracker Watch",
+    "category": "Watch",
+    "price": 129.99,
+    "image": "watch2.jpg",
+    "description": "Fitness-focused watch with step counting, sleep tracking, and workout modes."
+  },
+  {
+    "index": 27,
+    "id": "watch_003",
+    "name": "Analog Sports Watch",
+    "category": "Watch",
+    "price": 89.99,
+    "image": "watch3.jpg",
+    "description": "Durable analog sports watch with water resistance and shock protection."
+  },
+  {
+    "index": 28,
+    "id": "watch_004",
+    "name": "Digital Watch",
+    "category": "Watch",
+    "price": 49.99,
+    "image": "watch4.jpg",
+    "description": "Simple digital watch with alarm, stopwatch, and backlight display."
+  },
+  {
+    "index": 29,
+    "id": "watch_005",
+    "name": "Luxury Smart Watch",
+    "category": "Watch",
+    "price": 399.99,
+    "image": "watch5.jpg",
+    "description": "Premium smart watch with stainless steel case and advanced health features."
+  },
+  {
+    "index": 30,
+    "id": "headphones_001",
+    "name": "Wireless Headphones",
+    "category": "Headphones",
+    "price": 89.99,
+    "image": "headphones1.jpg",
+    "description": "Over-ear wireless headphones with noise cancellation and 20 hours battery."
+  },
+  {
+    "index": 31,
+    "id": "headphones_002",
+    "name": "Noise-Cancelling Headphones",
+    "category": "Headphones",
+    "price": 149.99,
+    "image": "headphones2.jpg",
+    "description": "Premium noise-cancelling headphones with superior sound quality."
+  },
+  {
+    "index": 32,
+    "id": "headphones_003",
+    "name": "Gaming Headphones",
+    "category": "Headphones",
+    "price": 79.99,
+    "image": "headphones3.jpg",
+    "description": "Gaming headphones with surround sound and detachable microphone."
+  },
+  {
+    "index": 33,
+    "id": "headphones_004",
+    "name": "Studio Headphones",
+    "category": "Headphones",
+    "price": 199.99,
+    "image": "headphones4.jpg",
+    "description": "Professional studio headphones with flat frequency response for mixing."
+  },
+  {
+    "index": 34,
+    "id": "headphones_005",
+    "name": "Bluetooth Earbuds",
+    "category": "Headphones",
+    "price": 59.99,
+    "image": "headphones5.jpg",
+    "description": "Compact Bluetooth earbuds with charging case and touch controls."
   }
 ]

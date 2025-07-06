@@ -22,6 +22,7 @@ def preprocess_image(image: Image.Image) -> np.ndarray:
     return image
 
 def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
+    print(f"[🔁] Sending image to Triton Inference Server at {TRITON_VISION_URL}...")
     payload = {
         "inputs": [
             {
@@ -39,7 +40,7 @@ def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
     embedding_data = result["outputs"][0]["data"]
     return np.array(embedding_data, dtype=np.float32).reshape((1, -1))
 
-# --- Initialize once globally ---
+# --- Initialize resources globally ---
 
 with open("sample_data/products.json") as f:
     PRODUCTS = json.load(f)
@@ -65,13 +66,16 @@ def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
     try:
         image_tensor = preprocess_image(query_img)
         query_embedding = infer_with_triton(image_tensor)
-    except Exception:
+        print("[✅] Triton inference succeeded.")
+    except Exception as e:
+        print(f"[⚠️] Triton inference failed: {e}")
+        print("[🧠] Falling back to local ClipEmbedder...")
         embedder = ClipEmbedder()
         query_embedding = embedder.encode_image(query_img).astype(np.float32)
 
     top_matches = ENGINE.search(query_embedding, top_k=top_k)
 
-    # Return sanitized data only
+    # Return sanitized results
     sanitized = []
     for m in top_matches:
         sanitized.append({

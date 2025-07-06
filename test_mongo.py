@@ -1,9 +1,10 @@
-import onnx
-import os
+# test_triton.py
+from PIL import Image
+import numpy as np
+from scripts.start_pipeline import preprocess_image, infer_with_triton
 
-model_dir = "onnx_models"
-for file in os.listdir(model_dir):
-    if file.endswith(".onnx"):
-        model_path = os.path.join(model_dir, file)
-        model = onnx.load(model_path)
-        print(f"Outputs for {file}: {[output.name for output in model.graph.output]}")
+img = Image.open("sample_data/images/shoe1.jpg").convert("RGB")
+img_tensor = preprocess_image(img)
+embedding = infer_with_triton(img_tensor)
+
+print("[✅] Triton returned embedding of shape:", embedding.shape)
