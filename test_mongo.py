@@ -1,8 +1,9 @@
-from pymongo import MongoClient
+import onnx
+import os
 
-try:
-    client = MongoClient("mongodb://localhost:27017", serverSelectionTimeoutMS=5000)
-    client.admin.command("ping")
-    print("✅ Connected to MongoDB!")
-except Exception as e:
-    print("❌ Connection failed:", e)
+model_dir = "onnx_models"
+for file in os.listdir(model_dir):
+    if file.endswith(".onnx"):
+        model_path = os.path.join(model_dir, file)
+        model = onnx.load(model_path)
+        print(f"Outputs for {file}: {[output.name for output in model.graph.output]}")

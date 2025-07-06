@@ -1,3 +1,6 @@
+# Add Poetry's install location to PATH so make finds it
+export PATH := $(HOME)/.local/bin:$(PATH)
+
 # === Paths ===
 ONNX_DIR=onnx_models
 ENGINE_DIR=triton_models/clip_vision/1
@@ -8,6 +11,8 @@ VISION_ENGINE=$(ENGINE_DIR)/model.plan
 TEXT_ENGINE=triton_models/clip_text/1/model.plan
 
 .PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings
+
+all: run_pipeline
 
 ## Export CLIP vision & text encoders to ONNX
 export_onnx:

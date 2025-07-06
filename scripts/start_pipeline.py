@@ -8,84 +8,87 @@ from vector_db.engine import FaissVectorEngine
 from mongo_store.database import MongoDB
 import requests
 
-load_dotenv()  # Load environment variables from .env file
+# Load environment variables
+load_dotenv()
 
-TRITON_MODEL_NAME = os.getenv("TRITON_MODEL_NAME", "vlm_model")
-TRITON_URL = f"http://localhost:8000/v2/models/{TRITON_MODEL_NAME}/infer"
+TRITON_VISION_URL = os.getenv("TRITON_VISION_URL")
+FAISS_INDEX_PATH = os.getenv("FAISS_INDEX_PATH", "vector_db/product_index.faiss")
+TRITON_MODEL_NAME = os.getenv("TRITON_MODEL_NAME", "clip_vision")
+
+def preprocess_image(image: Image.Image) -> np.ndarray:
+    image = image.resize((224, 224))
+    image = np.asarray(image).astype(np.float32) / 255.0
+    image = image.transpose(2, 0, 1)  # HWC → CHW
+    image = np.expand_dims(image, axis=0)  # (1, 3, 224, 224)
+    return image
+
+def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
+    payload = {
+        "inputs": [
+            {
+                "name": "input_image",
+                "shape": list(image_tensor.shape),
+                "datatype": "FP32",
+                "data": image_tensor.flatten().tolist()
+            }
+        ],
+        "outputs": [{"name": "image_features"}]
+    }
+
+    response = requests.post(TRITON_VISION_URL, json=payload)
+    response.raise_for_status()
+    result = response.json()
+
+    embedding_data = result["outputs"][0]["data"]
+    return np.array(embedding_data, dtype=np.float32).reshape((1, -1))
 
 def main():
-    # Load product data
-    products_path = os.path.join("sample_data", "products.json")
-    with open(products_path) as f:
+    # Load product metadata
+    with open("sample_data/products.json") as f:
         products = json.load(f)
 
-    # Load embeddings
-    embeddings_path = os.path.join("sample_data", "embeddings.npy")
-    embeddings = np.load(embeddings_path).astype("float32")
+    # Load precomputed embeddings
+    embeddings = np.load("sample_data/embeddings.npy").astype(np.float32)
 
-    # Initialize and index embeddings in FAISS
+    # Initialize FAISS and index the embeddings
     engine = FaissVectorEngine(dim=embeddings.shape[1])
     engine.index_data(embeddings, products)
+    print(f"✅ FAISS index saved to {FAISS_INDEX_PATH}")
 
-    # Connect to MongoDB and insert product metadata
+    # Connect to MongoDB and insert metadata
     db = MongoDB()
     if not db.is_connected():
-        print("Failed to connect to MongoDB. Exiting.")
+        print("❌ MongoDB connection failed.")
         return
 
-    # Clear existing products and insert fresh
     db.products.delete_many({})
-    print(f"Cleared existing products.")
+    print("🧹 Cleared existing products.")
     db.insert_products(products)
+    print(f"📦 Inserted {len(products)} products successfully.")
 
-    # Initialize embedder for query image encoding (local fallback)
-    embedder = ClipEmbedder()
-
-    # Load query image (first product image)
-    query_img_path = os.path.join("sample_data", "images", products[0]["image"])
+    # Load query image (from first product)
+    query_img_path = os.path.join("sample_data/images", products[0]["image"])
     query_img = Image.open(query_img_path).convert("RGB")
 
-    # Call Triton to get embeddings for query image
+    # Try inference via Triton
     try:
-        # Convert image to bytes or base64 as Triton expects (depends on your model input)
-        # Here assuming base64-encoded image string input for simplicity:
-        import base64
-        with open(query_img_path, "rb") as img_file:
-            img_bytes = img_file.read()
-        img_b64 = base64.b64encode(img_bytes).decode('utf-8')
-
-        payload = {
-            "inputs": [
-                {
-                    "name": "input_image",  # Change this to your actual input tensor name
-                    "shape": [1],
-                    "datatype": "BYTES",
-                    "data": [img_b64]
-                }
-            ]
-        }
-        response = requests.post(TRITON_URL, json=payload)
-        response.raise_for_status()
-        result = response.json()
-
-        # Parse output embeddings from Triton response
-        # Change 'output_embedding' to your model's actual output tensor name
-        embedding_data = result["outputs"][0]["data"]
-        query_embedding = np.array(embedding_data, dtype=np.float32)
-
+        image_tensor = preprocess_image(query_img)
+        query_embedding = infer_with_triton(image_tensor)
+        print("✅ Inference completed via Triton server.")
     except Exception as e:
-        print(f"Error during Triton inference: {e}")
-        print("Falling back to local embedder...")
+        print(f"⚠️ Triton inference failed: {e}")
+        print("🔄 Falling back to local encoder.")
+        embedder = ClipEmbedder()
         query_embedding = embedder.encode_image(query_img).astype("float32")
 
-    # Search top 5 matches
+    # Perform search
     top_matches = engine.search(query_embedding, top_k=5)
 
-    print("Top matches:")
+    print("🔍 Top matches:")
     for i, match in enumerate(top_matches, 1):
         print(f"{i}. {match['name']} - {match['category']} - ${match['price']}")
 
-    print("✅ Search completed successfully! 🚀")
+    print("🚀 Search pipeline completed successfully!")
 
 if __name__ == "__main__":
     main()

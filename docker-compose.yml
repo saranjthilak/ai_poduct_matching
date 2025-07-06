@@ -1,40 +1,49 @@
-
+version: "3.8"
 
 services:
   triton:
     container_name: triton_server
     image: nvcr.io/nvidia/tritonserver:24.03-py3
-    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics
+      - TZ=UTC  # Set timezone if needed
     volumes:
-      - ./triton_models:/models
+      - ./triton_models:/models:ro  # Model repo mounted read-only
     command: >
-      tritonserver --model-repository=/models
+      tritonserver --model-repository=/models --strict-model-config=false
     ports:
-      - "8000:8000"  # HTTP
-      - "8001:8001"  # gRPC
-      - "8002:8002"  # Metrics
+      - "8000:8000"  # HTTP REST API
+      - "8001:8001"  # gRPC API
+      - "8002:8002"  # Metrics (Prometheus)
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/v2/health/ready"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/v2/health/ready || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   mongodb:
     container_name: mongodb
-    image: mongo:6
+    image: mongo:6.0
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
       timeout: 5s
       retries: 5
 
 volumes:
   mongodb_data:
+    driver: local
