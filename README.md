@@ -38,6 +38,12 @@ The repo comes with:
 ## 🔗 Live Demo
 
 > Optionally hosted via Gradio.
+## 🖼️ Demo Screenshot
+
+Here's how the UI looks in action:
+
+![Product Matching Demo UI](assets/demo_screenshot.png)
+
 > To try locally, run:
 ```bash
 poetry run python app/ui.py
