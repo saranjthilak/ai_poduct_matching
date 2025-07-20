@@ -46,6 +46,51 @@
   },
   {
     "index": 5,
+    "id": "mouse_006",
+    "name": "Ultra-Light Gaming Mouse",
+    "category": "Mouse",
+    "price": 69.99,
+    "image": "mouse6.jpg",
+    "description": "Ultra-lightweight gaming mouse with honeycomb shell design and 20,000 DPI sensor."
+  },
+  {
+    "index": 6,
+    "id": "mouse_007",
+    "name": "Trackball Mouse",
+    "category": "Mouse",
+    "price": 55.00,
+    "image": "mouse7.jpg",
+    "description": "Ergonomic trackball mouse with precision ball control and customizable buttons."
+  },
+  {
+    "index": 7,
+    "id": "mouse_008",
+    "name": "Ambidextrous Wireless Mouse",
+    "category": "Mouse",
+    "price": 32.99,
+    "image": "mouse8.jpg",
+    "description": "Symmetrical design mouse suitable for both left and right-handed users."
+  },
+  {
+    "index": 8,
+    "id": "mouse_009",
+    "name": "Rechargeable Gaming Mouse",
+    "category": "Mouse",
+    "price": 89.99,
+    "image": "mouse9.jpg",
+    "description": "High-end gaming mouse with wireless charging pad and customizable RGB lighting."
+  },
+  {
+    "index": 9,
+    "id": "mouse_010",
+    "name": "Precision Work Mouse",
+    "category": "Mouse",
+    "price": 75.50,
+    "image": "mouse10.jpg",
+    "description": "Professional mouse with hyper-accurate sensor for CAD work and graphic design."
+  },
+  {
+    "index": 10,
     "id": "laptop_001",
     "name": "Ultrabook Laptop",
     "category": "Laptop",
@@ -54,7 +99,7 @@
     "description": "Lightweight ultrabook with 16GB RAM and 512GB SSD."
   },
   {
-    "index": 6,
+    "index": 11,
     "id": "laptop_002",
     "name": "Gaming Laptop",
     "category": "Laptop",
@@ -63,7 +108,7 @@
     "description": "High performance gaming laptop with NVIDIA RTX graphics and 32GB RAM."
   },
   {
-    "index": 7,
+    "index": 12,
     "id": "laptop_003",
     "name": "Business Laptop",
     "category": "Laptop",
@@ -72,7 +117,7 @@
     "description": "Professional business laptop with security features and 14-inch display."
   },
   {
-    "index": 8,
+    "index": 13,
     "id": "laptop_004",
     "name": "2-in-1 Convertible Laptop",
     "category": "Laptop",
@@ -81,7 +126,7 @@
     "description": "Versatile 2-in-1 laptop with touchscreen and 360-degree hinge."
   },
   {
-    "index": 9,
+    "index": 14,
     "id": "laptop_005",
     "name": "Budget Student Laptop",
     "category": "Laptop",
@@ -90,7 +135,7 @@
     "description": "Affordable laptop perfect for students with 8GB RAM and 256GB SSD."
   },
   {
-    "index": 10,
+    "index": 15,
     "id": "shoes_001",
     "name": "Running Shoes",
     "category": "Shoes",
@@ -99,7 +144,7 @@
     "description": "Lightweight running shoes with breathable mesh and cushioned soles."
   },
   {
-    "index": 11,
+    "index": 16,
     "id": "shoes_002",
     "name": "Hiking Shoes",
     "category": "Shoes",
@@ -108,7 +153,7 @@
     "description": "Durable hiking shoes with waterproof material and rugged grip."
   },
   {
-    "index": 12,
+    "index": 17,
     "id": "shoes_003",
     "name": "Casual Sneakers",
     "category": "Shoes",
@@ -117,7 +162,7 @@
     "description": "Comfortable casual sneakers with classic design and all-day comfort."
   },
   {
-    "index": 13,
+    "index": 18,
     "id": "shoes_004",
     "name": "Athletic Cross-Training Shoes",
     "category": "Shoes",
@@ -126,7 +171,7 @@
     "description": "Versatile cross-training shoes for gym workouts and fitness activities."
   },
   {
-    "index": 14,
+    "index": 19,
     "id": "shoes_005",
     "name": "Walking Shoes",
     "category": "Shoes",
@@ -135,7 +180,79 @@
     "description": "Supportive walking shoes with arch support and shock absorption."
   },
   {
-    "index": 15,
+    "index": 20,
+    "id": "shoes_006",
+    "name": "Basketball Shoes",
+    "category": "Shoes",
+    "price": 145.00,
+    "image": "shoe6.jpg",
+    "description": "High-top basketball shoes with ankle support and responsive cushioning."
+  },
+  {
+    "index": 21,
+    "id": "shoes_007",
+    "name": "Dress Shoes",
+    "category": "Shoes",
+    "price": 180.00,
+    "image": "shoe7.jpg",
+    "description": "Classic leather dress shoes with polished finish for formal occasions."
+  },
+  {
+    "index": 22,
+    "id": "shoes_008",
+    "name": "Trail Running Shoes",
+    "category": "Shoes",
+    "price": 135.00,
+    "image": "shoe8.jpg",
+    "description": "Rugged trail running shoes with aggressive tread and rock protection."
+  },
+  {
+    "index": 23,
+    "id": "shoes_009",
+    "name": "Slip-On Loafers",
+    "category": "Shoes",
+    "price": 75.00,
+    "image": "shoe9.jpg",
+    "description": "Comfortable slip-on loafers perfect for casual and business casual wear."
+  },
+  {
+    "index": 24,
+    "id": "shoes_010",
+    "name": "Waterproof Boots",
+    "category": "Shoes",
+    "price": 165.00,
+    "image": "shoe10.jpg",
+    "description": "Heavy-duty waterproof boots with steel toe protection and slip-resistant sole."
+  },
+  {
+    "index": 25,
+    "id": "shoes_011",
+    "name": "Tennis Shoes",
+    "category": "Shoes",
+    "price": 105.00,
+    "image": "shoe11.jpg",
+    "description": "Court-specific tennis shoes with lateral support and durable outsole."
+  },
+  {
+    "index": 26,
+    "id": "shoes_012",
+    "name": "Minimalist Running Shoes",
+    "category": "Shoes",
+    "price": 98.00,
+    "image": "shoe12.jpg",
+    "description": "Zero-drop minimalist shoes for natural foot movement and barefoot feel."
+  },
+  {
+    "index": 27,
+    "id": "shoes_013",
+    "name": "High-Top Sneakers",
+    "category": "Shoes",
+    "price": 89.00,
+    "image": "shoe13.jpg",
+    "description": "Retro-style high-top sneakers with canvas upper and rubber toe cap."
+  },
+  {
+    "index": 28,
     "id": "camera_001",
     "name": "DSLR Camera",
     "category": "Camera",
@@ -144,7 +261,7 @@
     "description": "DSLR camera with 24MP sensor and 4K video recording."
   },
   {
-    "index": 16,
+    "index": 29,
     "id": "camera_002",
     "name": "Mirrorless Camera",
     "category": "Camera",
@@ -153,7 +270,7 @@
     "description": "Compact mirrorless camera with interchangeable lens and Wi-Fi support."
   },
   {
-    "index": 17,
+    "index": 30,
     "id": "camera_003",
     "name": "Action Camera",
     "category": "Camera",
@@ -162,7 +279,7 @@
     "description": "Waterproof action camera with 4K recording and image stabilization."
   },
   {
-    "index": 18,
+    "index": 31,
     "id": "camera_004",
     "name": "Instant Camera",
     "category": "Camera",
@@ -171,7 +288,7 @@
     "description": "Retro instant camera that prints photos immediately with vintage filters."
   },
   {
-    "index": 19,
+    "index": 32,
     "id": "camera_005",
     "name": "Point-and-Shoot Camera",
     "category": "Camera",
@@ -180,7 +297,7 @@
     "description": "Compact point-and-shoot camera with 20x optical zoom and auto-focus."
   },
   {
-    "index": 20,
+    "index": 33,
     "id": "lens_001",
     "name": "Camera Lens 50mm",
     "category": "Lens",
@@ -189,7 +306,7 @@
     "description": "Prime 50mm camera lens with f/1.8 aperture, perfect for portraits."
   },
   {
-    "index": 21,
+    "index": 34,
     "id": "lens_002",
     "name": "Wide Angle Lens 24mm",
     "category": "Lens",
@@ -198,7 +315,7 @@
     "description": "Ultra-wide 24mm lens ideal for landscape and architectural photography."
   },
   {
-    "index": 22,
+    "index": 35,
     "id": "lens_003",
     "name": "Telephoto Lens 85mm",
     "category": "Lens",
@@ -207,7 +324,7 @@
     "description": "Professional 85mm telephoto lens with excellent bokeh for portraits."
   },
   {
-    "index": 23,
+    "index": 36,
     "id": "lens_004",
     "name": "Macro Lens 60mm",
     "category": "Lens",
@@ -216,7 +333,7 @@
     "description": "Macro lens for extreme close-up photography with 1:1 magnification."
   },
   {
-    "index": 24,
+    "index": 37,
     "id": "lens_005",
     "name": "Zoom Lens 24-70mm",
     "category": "Lens",
@@ -225,7 +342,7 @@
     "description": "Versatile zoom lens covering wide-angle to portrait focal lengths."
   },
   {
-    "index": 25,
+    "index": 38,
     "id": "watch_001",
     "name": "Smart Watch",
     "category": "Watch",
@@ -234,7 +351,7 @@
     "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
   },
   {
-    "index": 26,
+    "index": 39,
     "id": "watch_002",
     "name": "Fitness Tracker Watch",
     "category": "Watch",
@@ -243,7 +360,7 @@
     "description": "Fitness-focused watch with step counting, sleep tracking, and workout modes."
   },
   {
-    "index": 27,
+    "index": 40,
     "id": "watch_003",
     "name": "Analog Sports Watch",
     "category": "Watch",
@@ -252,7 +369,7 @@
     "description": "Durable analog sports watch with water resistance and shock protection."
   },
   {
-    "index": 28,
+    "index": 41,
     "id": "watch_004",
     "name": "Digital Watch",
     "category": "Watch",
@@ -261,7 +378,7 @@
     "description": "Simple digital watch with alarm, stopwatch, and backlight display."
   },
   {
-    "index": 29,
+    "index": 42,
     "id": "watch_005",
     "name": "Luxury Smart Watch",
     "category": "Watch",
@@ -270,7 +387,7 @@
     "description": "Premium smart watch with stainless steel case and advanced health features."
   },
   {
-    "index": 30,
+    "index": 43,
     "id": "headphones_001",
     "name": "Wireless Headphones",
     "category": "Headphones",
@@ -279,7 +396,7 @@
     "description": "Over-ear wireless headphones with noise cancellation and 20 hours battery."
   },
   {
-    "index": 31,
+    "index": 44,
     "id": "headphones_002",
     "name": "Noise-Cancelling Headphones",
     "category": "Headphones",
@@ -288,7 +405,7 @@
     "description": "Premium noise-cancelling headphones with superior sound quality."
   },
   {
-    "index": 32,
+    "index": 45,
     "id": "headphones_003",
     "name": "Gaming Headphones",
     "category": "Headphones",
@@ -297,7 +414,7 @@
     "description": "Gaming headphones with surround sound and detachable microphone."
   },
   {
-    "index": 33,
+    "index": 46,
     "id": "headphones_004",
     "name": "Studio Headphones",
     "category": "Headphones",
@@ -306,12 +423,237 @@
     "description": "Professional studio headphones with flat frequency response for mixing."
   },
   {
-    "index": 34,
+    "index": 47,
     "id": "headphones_005",
     "name": "Bluetooth Earbuds",
     "category": "Headphones",
     "price": 59.99,
     "image": "headphones5.jpg",
     "description": "Compact Bluetooth earbuds with charging case and touch controls."
+  },
+  {
+    "index": 48,
+    "id": "watch_006",
+    "name": "Hybrid Smart Watch",
+    "category": "Watch",
+    "price": 179.99,
+    "image": "watch6.jpg",
+    "description": "Analog watch with smart features like notifications and activity tracking."
+  },
+  {
+    "index": 49,
+    "id": "watch_007",
+    "name": "Diving Watch",
+    "category": "Watch",
+    "price": 299.99,
+    "image": "watch7.jpg",
+    "description": "Professional diving watch with 300m water resistance and rotating bezel."
+  },
+  {
+    "index": 50,
+    "id": "watch_008",
+    "name": "Mechanical Watch",
+    "category": "Watch",
+    "price": 549.99,
+    "image": "watch8.jpg",
+    "description": "Classic mechanical watch with automatic movement and sapphire crystal."
+  },
+  {
+    "index": 51,
+    "id": "watch_009",
+    "name": "Solar Powered Watch",
+    "category": "Watch",
+    "price": 159.99,
+    "image": "watch9.jpg",
+    "description": "Eco-friendly solar powered watch with perpetual calendar and radio control."
+  },
+  {
+    "index": 52,
+    "id": "watch_010",
+    "name": "Smartwatch for Kids",
+    "category": "Watch",
+    "price": 89.99,
+    "image": "watch10.jpg",
+    "description": "Kid-friendly smartwatch with GPS tracking, games, and parental controls."
+  },
+  {
+    "index": 53,
+    "id": "lens_006",
+    "name": "Super Telephoto Lens 400mm",
+    "category": "Lens",
+    "price": 1299.00,
+    "image": "lens6.jpg",
+    "description": "Professional super telephoto lens for wildlife and sports photography."
+  },
+  {
+    "index": 54,
+    "id": "lens_007",
+    "name": "Fish-eye Lens 16mm",
+    "category": "Lens",
+    "price": 289.00,
+    "image": "lens7.jpg",
+    "description": "Ultra-wide fish-eye lens for creative photography with 180-degree field of view."
+  },
+  {
+    "index": 55,
+    "id": "lens_008",
+    "name": "Portrait Lens 105mm",
+    "category": "Lens",
+    "price": 520.00,
+    "image": "lens8.jpg",
+    "description": "Medium telephoto lens perfect for portraits with beautiful background blur."
+  },
+  {
+    "index": 56,
+    "id": "lens_009",
+    "name": "Ultra-wide Zoom 14-24mm",
+    "category": "Lens",
+    "price": 899.00,
+    "image": "lens9.jpg",
+    "description": "Professional ultra-wide zoom lens ideal for landscape and interior photography."
+  },
+  {
+    "index": 57,
+    "id": "lens_010",
+    "name": "Standard Zoom Lens 18-55mm",
+    "category": "Lens",
+    "price": 199.00,
+    "image": "lens10.jpg",
+    "description": "Versatile standard zoom lens perfect for beginners and everyday photography."
+  },
+  {
+    "index": 58,
+    "id": "laptop_006",
+    "name": "Workstation Laptop",
+    "category": "Laptop",
+    "price": 2199.99,
+    "image": "laptop6.jpg",
+    "description": "High-performance workstation laptop with Quadro graphics and 64GB RAM."
+  },
+  {
+    "index": 59,
+    "id": "laptop_007",
+    "name": "Chromebook",
+    "category": "Laptop",
+    "price": 299.99,
+    "image": "laptop7.jpg",
+    "description": "Lightweight Chromebook perfect for web browsing and cloud-based tasks."
+  },
+  {
+    "index": 60,
+    "id": "laptop_008",
+    "name": "Creator Laptop",
+    "category": "Laptop",
+    "price": 1899.99,
+    "image": "laptop8.jpg",
+    "description": "Content creator laptop with 4K display, color accuracy, and powerful GPU."
+  },
+  {
+    "index": 61,
+    "id": "laptop_009",
+    "name": "Rugged Laptop",
+    "category": "Laptop",
+    "price": 1299.99,
+    "image": "laptop9.jpg",
+    "description": "Military-grade rugged laptop with drop protection and spill-resistant keyboard."
+  },
+  {
+    "index": 62,
+    "id": "laptop_010",
+    "name": "Thin and Light Laptop",
+    "category": "Laptop",
+    "price": 699.99,
+    "image": "laptop10.jpg",
+    "description": "Ultra-thin laptop with long battery life and premium aluminum build."
+  },
+  {
+    "index": 63,
+    "id": "headphones_006",
+    "name": "Open-Back Headphones",
+    "category": "Headphones",
+    "price": 299.99,
+    "image": "headphones6.jpg",
+    "description": "Audiophile open-back headphones with natural soundstage and premium drivers."
+  },
+  {
+    "index": 64,
+    "id": "headphones_007",
+    "name": "Sports Earbuds",
+    "category": "Headphones",
+    "price": 79.99,
+    "image": "headphones7.jpg",
+    "description": "Waterproof sports earbuds with secure fit and sweat resistance."
+  },
+  {
+    "index": 65,
+    "id": "headphones_008",
+    "name": "DJ Headphones",
+    "category": "Headphones",
+    "price": 169.99,
+    "image": "headphones8.jpg",
+    "description": "Professional DJ headphones with swiveling ear cups and coiled cable."
+  },
+  {
+    "index": 66,
+    "id": "headphones_009",
+    "name": "Kids Headphones",
+    "category": "Headphones",
+    "price": 39.99,
+    "image": "headphones9.jpg",
+    "description": "Volume-limited kids headphones with colorful design and adjustable headband."
+  },
+  {
+    "index": 67,
+    "id": "headphones_010",
+    "name": "Bone Conduction Headphones",
+    "category": "Headphones",
+    "price": 119.99,
+    "image": "headphones10.jpg",
+    "description": "Innovative bone conduction headphones that leave ears open for ambient sound."
+  },
+  {
+    "index": 68,
+    "id": "camera_006",
+    "name": "Medium Format Camera",
+    "category": "Camera",
+    "price": 2499.00,
+    "image": "camera6.jpg",
+    "description": "Professional medium format camera with 50MP sensor and exceptional image quality."
+  },
+  {
+    "index": 69,
+    "id": "camera_007",
+    "name": "Film Camera",
+    "category": "Camera",
+    "price": 189.99,
+    "image": "camera7.jpg",
+    "description": "Classic 35mm film camera with manual controls for authentic photography experience."
+  },
+  {
+    "index": 70,
+    "id": "camera_008",
+    "name": "360-Degree Camera",
+    "category": "Camera",
+    "price": 399.99,
+    "image": "camera8.jpg",
+    "description": "Compact 360-degree camera for immersive VR content and panoramic photos."
+  },
+  {
+    "index": 71,
+    "id": "camera_009",
+    "name": "Security Camera",
+    "category": "Camera",
+    "price": 129.99,
+    "image": "camera9.jpg",
+    "description": "Wireless security camera with night vision, motion detection, and cloud storage."
+  },
+  {
+    "index": 72,
+    "id": "camera_010",
+    "name": "Drone Camera",
+    "category": "Camera",
+    "price": 899.99,
+    "image": "camera10.jpg",
+    "description": "Aerial drone with 4K camera, GPS stabilization, and intelligent flight modes."
   }
 ]
