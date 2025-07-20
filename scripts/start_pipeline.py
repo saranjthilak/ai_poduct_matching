@@ -7,6 +7,8 @@ from utils.embedding_utils import ClipEmbedder
 from vector_db.engine import FaissVectorEngine
 from mongo_store.database import MongoDB
 import requests
+import datetime
+import traceback
 
 load_dotenv()
 
@@ -40,6 +42,14 @@ def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
     embedding_data = result["outputs"][0]["data"]
     return np.array(embedding_data, dtype=np.float32).reshape((1, -1))
 
+def log_event(level: str, message: str, metadata: dict = None):
+    DB.db["pipeline_logs"].insert_one({
+        "timestamp": datetime.datetime.utcnow(),
+        "level": level,
+        "message": message,
+        "metadata": metadata or {}
+    })
+
 # --- Initialize resources globally ---
 
 with open("sample_data/products.json") as f:
@@ -53,10 +63,14 @@ ENGINE.index_data(EMBEDDINGS, PRODUCTS)
 DB = MongoDB()
 if not DB.is_connected():
     raise ConnectionError("MongoDB connection failed.")
+
+# Ensure a clean slate for testing/demo purposes
 DB.products.delete_many({})
 DB.insert_products(PRODUCTS)
 
 def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
+    log_event("INFO", "🔄 Matching pipeline started")
+
     if input_image is None:
         query_img_path = os.path.join("sample_data/images", PRODUCTS[0]["image"])
         query_img = Image.open(query_img_path).convert("RGB")
@@ -67,15 +81,23 @@ def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
         image_tensor = preprocess_image(query_img)
         query_embedding = infer_with_triton(image_tensor)
         print("[✅] Triton inference succeeded.")
+        log_event("INFO", "✅ Triton inference succeeded")
     except Exception as e:
-        print(f"[⚠️] Triton inference failed: {e}")
+        error_msg = str(e)
+        print(f"[⚠️] Triton inference failed: {error_msg}")
         print("[🧠] Falling back to local ClipEmbedder...")
+        log_event("ERROR", "❌ Triton inference failed, using fallback", {
+            "error": error_msg,
+            "traceback": traceback.format_exc()
+        })
         embedder = ClipEmbedder()
         query_embedding = embedder.encode_image(query_img).astype(np.float32)
 
     top_matches = ENGINE.search(query_embedding, top_k=top_k)
 
-    # Return sanitized results
+    result_log = [{"name": m.get("name"), "score": m.get("score", None)} for m in top_matches]
+    log_event("INFO", "✅ Matching complete", {"top_k": top_k, "results": result_log})
+
     sanitized = []
     for m in top_matches:
         sanitized.append({
@@ -84,4 +106,5 @@ def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
             "price": float(m.get("price", 0)),
             "image": m.get("image", ""),
         })
+
     return sanitized
