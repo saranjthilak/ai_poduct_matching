@@ -10,7 +10,7 @@ TEXT_ONNX=$(ONNX_DIR)/clip_text.onnx
 VISION_ENGINE=$(ENGINE_DIR)/model.plan
 TEXT_ENGINE=triton_models/clip_text/1/model.plan
 
-.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings demo help
+.PHONY: all export_onnx quantize_trt start_triton stop_triton run_pipeline clean generate_embeddings demo show_logs help
 
 ## Run full pipeline
 all: run_pipeline
@@ -51,6 +51,11 @@ run_pipeline: generate_embeddings
 demo:
 	@echo "🎛️ Launching Gradio interface..."
 	PYTHONPATH=$(PWD) poetry run python app/ui.py
+
+## Show pipeline logs from MongoDB
+show_logs:
+	@echo "🪵 Fetching pipeline logs from MongoDB..."
+	docker exec -it mongodb mongosh product_db --eval 'db.pipeline_logs.find().pretty()'
 
 ## Clean generated ONNX and engine files
 clean:
