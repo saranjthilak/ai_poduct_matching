@@ -1,659 +1,659 @@
 [
   {
     "index": 0,
-    "id": "mouse_001",
-    "name": "Wireless Ergonomic Mouse",
-    "category": "Mouse",
-    "price": 25.99,
-    "image": "mouse1.jpg",
-    "description": "Ergonomic wireless mouse with adjustable DPI and long battery life."
-  },
-  {
-    "index": 1,
-    "id": "mouse_002",
-    "name": "Gaming Mouse",
-    "category": "Mouse",
-    "price": 45.5,
-    "image": "mouse2.jpg",
-    "description": "RGB gaming mouse with programmable buttons and high precision sensor."
-  },
-  {
-    "index": 2,
-    "id": "mouse_003",
-    "name": "Bluetooth Travel Mouse",
-    "category": "Mouse",
-    "price": 18.99,
-    "image": "mouse3.jpg",
-    "description": "Compact Bluetooth mouse perfect for travel with foldable design."
-  },
-  {
-    "index": 3,
-    "id": "mouse_004",
-    "name": "Vertical Ergonomic Mouse",
-    "category": "Mouse",
-    "price": 39.99,
-    "image": "mouse4.jpg",
-    "description": "Vertical mouse design reduces wrist strain with natural hand position."
-  },
-  {
-    "index": 4,
-    "id": "mouse_005",
-    "name": "Wireless Silent Mouse",
-    "category": "Mouse",
-    "price": 22.5,
-    "image": "mouse5.jpg",
-    "description": "Silent click wireless mouse ideal for quiet environments and offices."
-  },
-  {
-    "index": 5,
-    "id": "mouse_006",
-    "name": "Ultra-Light Gaming Mouse",
-    "category": "Mouse",
-    "price": 69.99,
-    "image": "mouse6.jpg",
-    "description": "Ultra-lightweight gaming mouse with honeycomb shell design and 20,000 DPI sensor."
-  },
-  {
-    "index": 6,
-    "id": "mouse_007",
-    "name": "Trackball Mouse",
-    "category": "Mouse",
-    "price": 55.0,
-    "image": "mouse7.jpg",
-    "description": "Ergonomic trackball mouse with precision ball control and customizable buttons."
-  },
-  {
-    "index": 7,
-    "id": "mouse_008",
-    "name": "Ambidextrous Wireless Mouse",
-    "category": "Mouse",
-    "price": 32.99,
-    "image": "mouse8.jpg",
-    "description": "Symmetrical design mouse suitable for both left and right-handed users."
-  },
-  {
-    "index": 8,
-    "id": "mouse_009",
-    "name": "Rechargeable Gaming Mouse",
-    "category": "Mouse",
-    "price": 89.99,
-    "image": "mouse9.jpg",
-    "description": "High-end gaming mouse with wireless charging pad and customizable RGB lighting."
-  },
-  {
-    "index": 9,
-    "id": "mouse_010",
-    "name": "Precision Work Mouse",
-    "category": "Mouse",
-    "price": 75.5,
-    "image": "mouse10.jpg",
-    "description": "Professional mouse with hyper-accurate sensor for CAD work and graphic design."
-  },
-  {
-    "index": 10,
-    "id": "laptop_001",
-    "name": "Ultrabook Laptop",
-    "category": "Laptop",
-    "price": 999.0,
-    "image": "laptop1.jpg",
-    "description": "Lightweight ultrabook with 16GB RAM and 512GB SSD."
-  },
-  {
-    "index": 11,
-    "id": "laptop_002",
-    "name": "Gaming Laptop",
-    "category": "Laptop",
-    "price": 1450.75,
-    "image": "laptop2.jpg",
-    "description": "High performance gaming laptop with NVIDIA RTX graphics and 32GB RAM."
-  },
-  {
-    "index": 12,
-    "id": "laptop_003",
-    "name": "Business Laptop",
-    "category": "Laptop",
-    "price": 849.99,
-    "image": "laptop3.jpg",
-    "description": "Professional business laptop with security features and 14-inch display."
-  },
-  {
-    "index": 13,
-    "id": "laptop_004",
-    "name": "2-in-1 Convertible Laptop",
-    "category": "Laptop",
-    "price": 749.99,
-    "image": "laptop4.jpg",
-    "description": "Versatile 2-in-1 laptop with touchscreen and 360-degree hinge."
-  },
-  {
-    "index": 14,
-    "id": "laptop_005",
-    "name": "Budget Student Laptop",
-    "category": "Laptop",
-    "price": 399.99,
-    "image": "laptop5.jpg",
-    "description": "Affordable laptop perfect for students with 8GB RAM and 256GB SSD."
-  },
-  {
-    "index": 15,
-    "id": "shoes_001",
-    "name": "Running Shoes",
-    "category": "Shoes",
-    "price": 120.0,
-    "image": "shoe1.jpg",
-    "description": "Lightweight running shoes with breathable mesh and cushioned soles."
-  },
-  {
-    "index": 16,
-    "id": "shoes_002",
-    "name": "Hiking Shoes",
-    "category": "Shoes",
-    "price": 140.0,
-    "image": "shoe2.jpg",
-    "description": "Durable hiking shoes with waterproof material and rugged grip."
-  },
-  {
-    "index": 17,
-    "id": "shoes_003",
-    "name": "Casual Sneakers",
-    "category": "Shoes",
-    "price": 85.0,
-    "image": "shoe3.jpg",
-    "description": "Comfortable casual sneakers with classic design and all-day comfort."
-  },
-  {
-    "index": 18,
-    "id": "shoes_004",
-    "name": "Athletic Cross-Training Shoes",
-    "category": "Shoes",
-    "price": 95.0,
-    "image": "shoe4.jpg",
-    "description": "Versatile cross-training shoes for gym workouts and fitness activities."
-  },
-  {
-    "index": 19,
-    "id": "shoes_005",
-    "name": "Walking Shoes",
-    "category": "Shoes",
-    "price": 110.0,
-    "image": "shoe5.jpg",
-    "description": "Supportive walking shoes with arch support and shock absorption."
-  },
-  {
-    "index": 20,
-    "id": "shoes_006",
-    "name": "Basketball Shoes",
-    "category": "Shoes",
-    "price": 145.0,
-    "image": "shoe6.jpg",
-    "description": "High-top basketball shoes with ankle support and responsive cushioning."
-  },
-  {
-    "index": 21,
-    "id": "shoes_007",
-    "name": "Dress Shoes",
-    "category": "Shoes",
-    "price": 180.0,
-    "image": "shoe7.jpg",
-    "description": "Classic leather dress shoes with polished finish for formal occasions."
-  },
-  {
-    "index": 22,
-    "id": "shoes_008",
-    "name": "Trail Running Shoes",
-    "category": "Shoes",
-    "price": 135.0,
-    "image": "shoe8.jpg",
-    "description": "Rugged trail running shoes with aggressive tread and rock protection."
-  },
-  {
-    "index": 23,
-    "id": "shoes_009",
-    "name": "Slip-On Loafers",
-    "category": "Shoes",
-    "price": 75.0,
-    "image": "shoe9.jpg",
-    "description": "Comfortable slip-on loafers perfect for casual and business casual wear."
-  },
-  {
-    "index": 24,
-    "id": "shoes_010",
-    "name": "Waterproof Boots",
-    "category": "Shoes",
-    "price": 165.0,
-    "image": "shoe10.jpg",
-    "description": "Heavy-duty waterproof boots with steel toe protection and slip-resistant sole."
-  },
-  {
-    "index": 25,
-    "id": "shoes_011",
-    "name": "Tennis Shoes",
-    "category": "Shoes",
-    "price": 105.0,
-    "image": "shoe11.jpg",
-    "description": "Court-specific tennis shoes with lateral support and durable outsole."
-  },
-  {
-    "index": 26,
-    "id": "shoes_012",
-    "name": "Minimalist Running Shoes",
-    "category": "Shoes",
-    "price": 98.0,
-    "image": "shoe12.jpg",
-    "description": "Zero-drop minimalist shoes for natural foot movement and barefoot feel."
-  },
-  {
-    "index": 27,
-    "id": "shoes_013",
-    "name": "High-Top Sneakers",
-    "category": "Shoes",
-    "price": 89.0,
-    "image": "shoe13.jpg",
-    "description": "Retro-style high-top sneakers with canvas upper and rubber toe cap."
-  },
-  {
-    "index": 28,
-    "id": "camera_001",
-    "name": "DSLR Camera",
-    "category": "Camera",
-    "price": 599.0,
-    "image": "camera1.jpg",
-    "description": "DSLR camera with 24MP sensor and 4K video recording."
-  },
-  {
-    "index": 29,
-    "id": "camera_002",
-    "name": "Mirrorless Camera",
-    "category": "Camera",
-    "price": 799.0,
-    "image": "camera2.jpg",
-    "description": "Compact mirrorless camera with interchangeable lens and Wi-Fi support."
-  },
-  {
-    "index": 30,
-    "id": "camera_003",
-    "name": "Action Camera",
-    "category": "Camera",
-    "price": 299.99,
-    "image": "camera3.jpg",
-    "description": "Waterproof action camera with 4K recording and image stabilization."
-  },
-  {
-    "index": 31,
-    "id": "camera_004",
-    "name": "Instant Camera",
-    "category": "Camera",
-    "price": 149.99,
-    "image": "camera4.jpg",
-    "description": "Retro instant camera that prints photos immediately with vintage filters."
-  },
-  {
-    "index": 32,
-    "id": "camera_005",
-    "name": "Point-and-Shoot Camera",
-    "category": "Camera",
-    "price": 249.99,
-    "image": "camera5.jpg",
-    "description": "Compact point-and-shoot camera with 20x optical zoom and auto-focus."
-  },
-  {
-    "index": 33,
-    "id": "lens_001",
-    "name": "Camera Lens 50mm",
-    "category": "Lens",
-    "price": 250.0,
-    "image": "lens1.jpg",
-    "description": "Prime 50mm camera lens with f/1.8 aperture, perfect for portraits."
-  },
-  {
-    "index": 34,
-    "id": "lens_002",
-    "name": "Wide Angle Lens 24mm",
-    "category": "Lens",
-    "price": 320.0,
-    "image": "lens2.jpg",
-    "description": "Ultra-wide 24mm lens ideal for landscape and architectural photography."
-  },
-  {
-    "index": 35,
-    "id": "lens_003",
-    "name": "Telephoto Lens 85mm",
-    "category": "Lens",
-    "price": 450.0,
-    "image": "lens3.jpg",
-    "description": "Professional 85mm telephoto lens with excellent bokeh for portraits."
-  },
-  {
-    "index": 36,
-    "id": "lens_004",
-    "name": "Macro Lens 60mm",
-    "category": "Lens",
-    "price": 380.0,
-    "image": "lens4.jpg",
-    "description": "Macro lens for extreme close-up photography with 1:1 magnification."
-  },
-  {
-    "index": 37,
-    "id": "lens_005",
-    "name": "Zoom Lens 24-70mm",
-    "category": "Lens",
-    "price": 599.0,
-    "image": "lens5.jpg",
-    "description": "Versatile zoom lens covering wide-angle to portrait focal lengths."
-  },
-  {
-    "index": 38,
     "id": "watch_001",
     "name": "Smart Watch",
     "category": "Watch",
     "price": 199.99,
     "image": "watch1.jpg",
-    "description": "Smart watch with heart rate monitor, GPS, and customizable watch faces."
+    "description": "A black smart watch with a vibrant, abstract, fiery yellow and orange watch face. It has a black silicone strap and a single button on the right side."
   },
   {
-    "index": 39,
+    "index": 1,
     "id": "watch_002",
     "name": "Fitness Tracker Watch",
     "category": "Watch",
     "price": 129.99,
     "image": "watch2.jpg",
-    "description": "Fitness-focused watch with step counting, sleep tracking, and workout modes."
+    "description": "A black smart watch with a black silicone strap and a classic analog watch face display with white numerals and hands. It has a single button on the right side."
   },
   {
-    "index": 40,
+    "index": 2,
     "id": "watch_003",
     "name": "Analog Sports Watch",
     "category": "Watch",
     "price": 89.99,
     "image": "watch3.jpg",
-    "description": "Durable analog sports watch with water resistance and shock protection."
+    "description": "A rose gold smartwatch with a white silicone strap, featuring a rectangular black screen and a single button on the side."
   },
   {
-    "index": 41,
+    "index": 3,
     "id": "watch_004",
     "name": "Digital Watch",
     "category": "Watch",
     "price": 49.99,
     "image": "watch4.jpg",
-    "description": "Simple digital watch with alarm, stopwatch, and backlight display."
+    "description": "A chronograph watch with a silver-tone metal bracelet and a dark grey dial. It features three subdials, yellow accents for numbers and hands, and multiple pushers on the side."
   },
   {
-    "index": 42,
+    "index": 4,
     "id": "watch_005",
     "name": "Luxury Smart Watch",
     "category": "Watch",
     "price": 399.99,
     "image": "watch5.jpg",
-    "description": "Premium smart watch with stainless steel case and advanced health features."
+    "description": "A multi-function chronograph watch with a two-tone metal bracelet (black and rose gold) and a black dial with rose gold accents. It has multiple subdials and pushers."
   },
   {
-    "index": 43,
-    "id": "headphones_001",
-    "name": "Wireless Headphones",
-    "category": "Headphones",
-    "price": 89.99,
-    "image": "headphones1.jpg",
-    "description": "Over-ear wireless headphones with noise cancellation and 20 hours battery."
-  },
-  {
-    "index": 44,
-    "id": "headphones_002",
-    "name": "Noise-Cancelling Headphones",
-    "category": "Headphones",
-    "price": 149.99,
-    "image": "headphones2.jpg",
-    "description": "Premium noise-cancelling headphones with superior sound quality."
-  },
-  {
-    "index": 45,
-    "id": "headphones_003",
-    "name": "Gaming Headphones",
-    "category": "Headphones",
-    "price": 79.99,
-    "image": "headphones3.jpg",
-    "description": "Gaming headphones with surround sound and detachable microphone."
-  },
-  {
-    "index": 46,
-    "id": "headphones_004",
-    "name": "Studio Headphones",
-    "category": "Headphones",
-    "price": 199.99,
-    "image": "headphones4.jpg",
-    "description": "Professional studio headphones with flat frequency response for mixing."
-  },
-  {
-    "index": 47,
-    "id": "headphones_005",
-    "name": "Bluetooth Earbuds",
-    "category": "Headphones",
-    "price": 59.99,
-    "image": "headphones5.jpg",
-    "description": "Compact Bluetooth earbuds with charging case and touch controls."
-  },
-  {
-    "index": 48,
+    "index": 5,
     "id": "watch_006",
     "name": "Hybrid Smart Watch",
     "category": "Watch",
     "price": 179.99,
     "image": "watch6.jpg",
-    "description": "Analog watch with smart features like notifications and activity tracking."
+    "description": "A classic analog watch with a black dial, gold-tone case, and a black leather strap. The watch face has minimalistic gold markers and hands, with 'Daniel Wellington' branding."
   },
   {
-    "index": 49,
+    "index": 6,
     "id": "watch_007",
     "name": "Diving Watch",
     "category": "Watch",
     "price": 299.99,
     "image": "watch7.jpg",
-    "description": "Professional diving watch with 300m water resistance and rotating bezel."
+    "description": "An elegant gold-tone analog watch with a white dial and a black alligator-patterned leather strap. It features Roman numerals, a date window, and 'RAYMOND WEIL GENEVE' branding."
   },
   {
-    "index": 50,
+    "index": 7,
     "id": "watch_008",
     "name": "Mechanical Watch",
     "category": "Watch",
     "price": 549.99,
     "image": "watch8.jpg",
-    "description": "Classic mechanical watch with automatic movement and sapphire crystal."
+    "description": "A classic mechanical watch with a silver-tone metal bracelet and a black dial. It features a red and blue 'Pepsi' bezel, a date window, and a cyclops magnification lens over the date."
   },
   {
-    "index": 51,
+    "index": 8,
     "id": "watch_009",
     "name": "Solar Powered Watch",
     "category": "Watch",
     "price": 159.99,
     "image": "watch9.jpg",
-    "description": "Eco-friendly solar powered watch with perpetual calendar and radio control."
+    "description": "A minimalist analog watch with a silver-tone case, a white dial with simple black hour markers, and a light beige leather strap. The brand 'THISISFETIQUETTE' is visible on the dial."
   },
   {
-    "index": 52,
+    "index": 9,
     "id": "watch_010",
     "name": "Smartwatch for Kids",
     "category": "Watch",
     "price": 89.99,
     "image": "watch10.jpg",
-    "description": "Kid-friendly smartwatch with GPS tracking, games, and parental controls."
+    "description": "A classic analog watch with a silver-tone case, a white dial, and a brown leather strap. The watch face features black hour markers and numerals, with 'RIDER' branding and a date window."
   },
   {
-    "index": 53,
+    "index": 10,
+    "id": "lens_001",
+    "name": "Wide-Angle Prime Lens 14mm",
+    "category": "Lens",
+    "price": 350.0,
+    "image": "lens1.jpg",
+    "description": "A black camera lens with a lens hood, marked 'SAMYANG 28/1.4 mm', positioned diagonally on a dark, textured fabric surface."
+  },
+  {
+    "index": 11,
+    "id": "lens_002",
+    "name": "Telephoto Zoom Lens 55-200mm",
+    "category": "Lens",
+    "price": 250.0,
+    "image": "lens2.jpg",
+    "description": "A black camera lens with a 'Nikon' logo and 'AF-S DX NIKKOR 55-200mm' text, centered against a grey background."
+  },
+  {
+    "index": 12,
+    "id": "lens_003",
+    "name": "Standard Zoom Lens 18-55mm",
+    "category": "Lens",
+    "price": 199.0,
+    "image": "lens3.jpg",
+    "description": "A black camera lens, marked 'Nikon AF-S DX NIKKOR 18-55mm', positioned on its side against a light grey background."
+  },
+  {
+    "index": 13,
+    "id": "lens_004",
+    "name": "Prime Lens 40mm",
+    "category": "Lens",
+    "price": 180.0,
+    "image": "lens4.jpg",
+    "description": "A black camera lens with 'KONICA HEXANON AR 40mm F1.8' and 'JAPAN 55φ' markings, seen from the front on a dark, textured surface."
+  },
+  {
+    "index": 14,
+    "id": "lens_005",
+    "name": "Macro Lens 100mm",
+    "category": "Lens",
+    "price": 450.0,
+    "image": "lens5.jpg",
+    "description": "A hand holding a camera lens, framing a sunset over a mountainous landscape through its opening."
+  },
+  {
+    "index": 15,
     "id": "lens_006",
     "name": "Super Telephoto Lens 400mm",
     "category": "Lens",
     "price": 1299.0,
     "image": "lens6.jpg",
-    "description": "Professional super telephoto lens for wildlife and sports photography."
+    "description": "A hand holding the rear element of a camera lens, with a blurred person in red pants reflected in the lens, against a blurred building background."
   },
   {
-    "index": 54,
+    "index": 16,
     "id": "lens_007",
     "name": "Fish-eye Lens 16mm",
     "category": "Lens",
     "price": 289.0,
     "image": "lens7.jpg",
-    "description": "Ultra-wide fish-eye lens for creative photography with 180-degree field of view."
+    "description": "A black camera lens with a textured grip, featuring a wide front element that reflects light, placed on a light surface with a blurred camera body in the background."
   },
   {
-    "index": 55,
+    "index": 17,
     "id": "lens_008",
     "name": "Portrait Lens 105mm",
     "category": "Lens",
     "price": 520.0,
     "image": "lens8.jpg",
-    "description": "Medium telephoto lens perfect for portraits with beautiful background blur."
+    "description": "A black camera lens placed on a surface split diagonally between light blue and white colors."
   },
   {
-    "index": 56,
+    "index": 18,
     "id": "lens_009",
     "name": "Ultra-wide Zoom 14-24mm",
     "category": "Lens",
     "price": 899.0,
     "image": "lens9.jpg",
-    "description": "Professional ultra-wide zoom lens ideal for landscape and interior photography."
+    "description": "A hand holding the rear element of a camera lens, revealing internal components and reflections of green foliage, against a blurred background of dark green leaves and orange berries."
   },
   {
-    "index": 57,
+    "index": 19,
     "id": "lens_010",
     "name": "Standard Zoom Lens 18-55mm",
     "category": "Lens",
     "price": 199.0,
     "image": "lens10.jpg",
-    "description": "Versatile standard zoom lens perfect for beginners and everyday photography."
+    "description": "A black camera lens with a lens hood attached, displaying focal length markings '24-70/4 S', standing upright on a wooden surface against a dark, plain background."
   },
   {
-    "index": 58,
+    "index": 20,
+    "id": "mouse_001",
+    "name": "Ergonomic Wireless Mouse",
+    "category": "Mouse",
+    "price": 25.0,
+    "image": "mouse1.jpg",
+    "description": "A black wireless computer mouse with a red scroll wheel, positioned on a wooden surface with a blurred background."
+  },
+  {
+    "index": 21,
+    "id": "mouse_002",
+    "name": "Gaming Mouse",
+    "category": "Mouse",
+    "price": 40.0,
+    "image": "mouse2.jpg",
+    "description": "A black gaming mouse with RGB lighting, showing a subtle glow, placed on a dark surface, with its braided cable visible."
+  },
+  {
+    "index": 22,
+    "id": "mouse_003",
+    "name": "Ergonomic Gaming Mouse",
+    "category": "Mouse",
+    "price": 49.99,
+    "image": "mouse3.jpg",
+    "description": "A black gaming mouse with a stylized logo and RGB lighting, featuring purple and green accents, resting on a textured mousepad with a blurred keyboard in the background."
+  },
+  {
+    "index": 23,
+    "id": "mouse_004",
+    "name": "Wireless Vertical Mouse",
+    "category": "Mouse",
+    "price": 35.0,
+    "image": "mouse4.jpg",
+    "description": "A black gaming mouse with an illuminated white lion-head logo, glowing with blue and purple lights in a dimly lit setting."
+  },
+  {
+    "index": 24,
+    "id": "mouse_005",
+    "name": "Silent Click Mouse",
+    "category": "Mouse",
+    "price": 25.0,
+    "image": "mouse5.jpg",
+    "description": "A black gaming mouse with the 'LAMZU' logo in yellow, viewed from the side, on a vibrant yellow background."
+  },
+  {
+    "index": 25,
+    "id": "mouse_006",
+    "name": "Ultra-Light Gaming Mouse",
+    "category": "Mouse",
+    "price": 69.99,
+    "image": "mouse6.jpg",
+    "description": "A dark grey and black gaming mouse with blue LED accents, featuring several programmable buttons and a textured grip on the side, resting on a reflective white surface."
+  },
+  {
+    "index": 26,
+    "id": "mouse_007",
+    "name": "Trackball Mouse",
+    "category": "Mouse",
+    "price": 55.0,
+    "image": "mouse7.jpg",
+    "description": "A black ergonomic mouse with a silver scroll wheel, branded 'logi', positioned on a wooden desk next to a blurred laptop."
+  },
+  {
+    "index": 27,
+    "id": "mouse_008",
+    "name": "Ambidextrous Wireless Mouse",
+    "category": "Mouse",
+    "price": 32.99,
+    "image": "mouse8.jpg",
+    "description": "A black gaming mouse with illuminated red and white honeycomb patterns, and an 'acer' logo, seen from above on a colorful, abstract background with blue, purple, and green tones."
+  },
+  {
+    "index": 28,
+    "id": "mouse_009",
+    "name": "Rechargeable Gaming Mouse",
+    "category": "Mouse",
+    "price": 75.0,
+    "image": "mouse9.jpg",
+    "description": "An ergonomic wireless mouse in a dark color, featuring multiple buttons and a textured scroll wheel, with blurred colorful lights in the background."
+  },
+  {
+    "index": 29,
+    "id": "mouse_010",
+    "name": "Precision Work Mouse",
+    "category": "Mouse",
+    "price": 45.0,
+    "image": "mouse10.jpg",
+    "description": "A sleek, flat wireless mouse in a dark color, illuminated by blue and pink lighting, showing a minimalist design with a scroll wheel."
+  },
+  {
+    "index": 30,
+    "id": "laptop_001",
+    "name": "Ultrabook",
+    "category": "Laptop",
+    "price": 999.0,
+    "image": "laptop1.jpg",
+    "description": "A person typing on a silver laptop with a glowing keyboard, with the laptop screen displaying a web page or application, and a cup of coffee nearby."
+  },
+  {
+    "index": 31,
+    "id": "laptop_002",
+    "name": "Convertible Laptop",
+    "category": "Laptop",
+    "price": 750.0,
+    "image": "laptop2.jpg",
+    "description": "A sleek, dark grey laptop with a blank black screen, positioned at an angle on a light grey surface, emphasizing its slim profile."
+  },
+  {
+    "index": 32,
+    "id": "laptop_003",
+    "name": "Gaming Laptop",
+    "category": "Laptop",
+    "price": 1599.99,
+    "image": "laptop3.jpg",
+    "description": "A sleek, dark grey gaming laptop with a glowing blue keyboard, featuring a large screen displaying what appears to be a gaming or performance interface, set against a dark background."
+  },
+  {
+    "index": 33,
+    "id": "laptop_004",
+    "name": "Business Laptop",
+    "category": "Laptop",
+    "price": 1099.0,
+    "image": "laptop4.jpg",
+    "description": "A silver laptop with a blank white screen, viewed from a slightly elevated angle, resting on a white surface with a blurred background."
+  },
+  {
+    "index": 34,
+    "id": "laptop_005",
+    "name": "Lightweight Laptop",
+    "category": "Laptop",
+    "price": 899.0,
+    "image": "laptop5.jpg",
+    "description": "A silver MacBook Air laptop with a blank black screen, positioned against a plain white background."
+  },
+  {
+    "index": 35,
     "id": "laptop_006",
     "name": "Workstation Laptop",
     "category": "Laptop",
-    "price": 2199.99,
+    "price": 1499.99,
     "image": "laptop6.jpg",
-    "description": "High-performance workstation laptop with Quadro graphics and 64GB RAM."
+    "description": "A close-up of a laptop screen displaying lines of colorful code on a dark background, with the laptop's keyboard illuminated with red backlighting."
   },
   {
-    "index": 59,
+    "index": 36,
     "id": "laptop_007",
     "name": "Chromebook",
     "category": "Laptop",
-    "price": 299.99,
+    "price": 349.99,
     "image": "laptop7.jpg",
-    "description": "Lightweight Chromebook perfect for web browsing and cloud-based tasks."
+    "description": "A silver laptop displaying a dashboard with various charts and graphs, including a world map and a pie chart, resting on a dark grey sofa with a blurred background."
   },
   {
-    "index": 60,
+    "index": 37,
     "id": "laptop_008",
     "name": "Creator Laptop",
     "category": "Laptop",
     "price": 1899.99,
     "image": "laptop8.jpg",
-    "description": "Content creator laptop with 4K display, color accuracy, and powerful GPU."
+    "description": "A large, dark grey laptop with a website displaying high-quality images open on its screen, placed on a wooden desk next to a graphics tablet and pen."
   },
   {
-    "index": 61,
+    "index": 38,
     "id": "laptop_009",
     "name": "Rugged Laptop",
     "category": "Laptop",
     "price": 1299.99,
     "image": "laptop9.jpg",
-    "description": "Military-grade rugged laptop with drop protection and spill-resistant keyboard."
+    "description": "An overhead shot of a person's hands typing on a silver laptop with a blank white screen, positioned on a light wooden desk. A white coffee cup and a small green plant are also on the desk."
   },
   {
-    "index": 62,
+    "index": 39,
     "id": "laptop_010",
     "name": "Thin and Light Laptop",
     "category": "Laptop",
     "price": 699.99,
     "image": "laptop10.jpg",
-    "description": "Ultra-thin laptop with long battery life and premium aluminum build."
+    "description": "A silver laptop with an image editing software open on its screen, showing another laptop, placed on a light wooden desk next to a glass of iced tea, a small vase with flowers, and two books with a toy car on top."
   },
   {
-    "index": 63,
+    "index": 40,
+    "id": "headphones_001",
+    "name": "Over-Ear Headphones",
+    "category": "Headphones",
+    "price": 150.0,
+    "image": "headphones1.jpg",
+    "description": "A pair of black over-ear headphones with large, circular earcups and a wide headband, resting on a white surface with a subtle reflection."
+  },
+  {
+    "index": 41,
+    "id": "headphones_002",
+    "name": "Wireless Earbuds",
+    "category": "Headphones",
+    "price": 129.0,
+    "image": "headphones2.jpg",
+    "description": "A pair of white wireless earbuds with their charging case, showing the earbuds nestled inside the open case, on a light grey background."
+  },
+  {
+    "index": 42,
+    "id": "headphones_003",
+    "name": "Noise-Cancelling Headphones",
+    "category": "Headphones",
+    "price": 249.0,
+    "image": "headphones3.jpg",
+    "description": "A pair of silver over-ear headphones with black earcups and a black headband, positioned on a stand, against a blurred background."
+  },
+  {
+    "index": 43,
+    "id": "headphones_004",
+    "name": "On-Ear Headphones",
+    "category": "Headphones",
+    "price": 89.0,
+    "image": "headphones4.jpg",
+    "description": "A person wearing black over-ear headphones, actively using a laptop with a blank white screen, suggesting focus and productivity in a brightly lit environment."
+  },
+  {
+    "index": 44,
+    "id": "headphones_005",
+    "name": "Studio Headphones",
+    "category": "Headphones",
+    "price": 199.0,
+    "image": "headphones5.jpg",
+    "description": "A pair of modern black over-ear headphones with a matte finish, displayed on a stand against a neutral background."
+  },
+  {
+    "index": 45,
     "id": "headphones_006",
     "name": "Open-Back Headphones",
     "category": "Headphones",
     "price": 299.99,
     "image": "headphones6.jpg",
-    "description": "Audiophile open-back headphones with natural soundstage and premium drivers."
+    "description": "A black over-ear headphone set is attached to a microphone on a stand. The microphone has a silver mesh top, and there's a warm, vertical light in the blurred background."
   },
   {
-    "index": 64,
+    "index": 46,
     "id": "headphones_007",
     "name": "Sports Earbuds",
     "category": "Headphones",
     "price": 79.99,
     "image": "headphones7.jpg",
-    "description": "Waterproof sports earbuds with secure fit and sweat resistance."
+    "description": "A pair of over-ear headphones with a dark brown headband and off-white earcups with dark padding, hanging from a light wooden stand against a light, blurred background."
   },
   {
-    "index": 65,
+    "index": 47,
     "id": "headphones_008",
     "name": "DJ Headphones",
     "category": "Headphones",
     "price": 169.99,
     "image": "headphones8.jpg",
-    "description": "Professional DJ headphones with swiveling ear cups and coiled cable."
+    "description": "A pair of black over-ear headphones, folded flat, positioned on a white surface."
   },
   {
-    "index": 66,
+    "index": 48,
     "id": "headphones_009",
     "name": "Kids Headphones",
     "category": "Headphones",
     "price": 39.99,
     "image": "headphones9.jpg",
-    "description": "Volume-limited kids headphones with colorful design and adjustable headband."
+    "description": "A pair of black over-ear headphones with textured earcups and a smooth headband, resting on a white surface with a coiled cable and a golden audio jack."
   },
   {
-    "index": 67,
+    "index": 49,
     "id": "headphones_010",
     "name": "Bone Conduction Headphones",
     "category": "Headphones",
     "price": 119.99,
     "image": "headphones10.jpg",
-    "description": "Innovative bone conduction headphones that leave ears open for ambient sound."
+    "description": "A pair of black over-ear headphones with textured earcups and a smooth headband, resting on a white surface with a blurred background that includes other small objects."
   },
   {
-    "index": 68,
+    "index": 50,
+    "id": "camera_001",
+    "name": "Entry-Level DSLR",
+    "category": "Camera",
+    "price": 500.0,
+    "image": "camera1.jpg",
+    "description": "A black Canon DSLR camera with a lens attached, viewed from the top-front, highlighting its mode dial and hot shoe, against a clean white background."
+  },
+  {
+    "index": 51,
+    "id": "camera_002",
+    "name": "Compact Digital Camera",
+    "category": "Camera",
+    "price": 199.99,
+    "image": "camera2.jpg",
+    "description": "A silver digital camera with a pop-up flash and a zoom lens, featuring 'Digital Camera' text and various buttons, viewed from the top-front on a white background."
+  },
+  {
+    "index": 52,
+    "id": "camera_003",
+    "name": "Professional DSLR",
+    "category": "Camera",
+    "price": 1200.0,
+    "image": "camera3.jpg",
+    "description": "A black Canon DSLR camera with a lens attached, viewed from a slight angle, showcasing its grip, lens, and part of the top panel, against a white background."
+  },
+  {
+    "index": 53,
+    "id": "camera_004",
+    "name": "Mirrorless Camera",
+    "category": "Camera",
+    "price": 850.0,
+    "image": "camera4.jpg",
+    "description": "A black DSLR camera with a lens, featuring a prominent 'Canon' logo, positioned on a wooden surface next to an open notebook and a pen."
+  },
+  {
+    "index": 54,
+    "id": "camera_005",
+    "name": "Vintage Film Camera",
+    "category": "Camera",
+    "price": 450.0,
+    "image": "camera5.jpg",
+    "description": "A black vintage film camera with a silver lens, a top-mounted flash, and a visible film counter, against a white background."
+  },
+  {
+    "index": 55,
     "id": "camera_006",
-    "name": "Medium Format Camera",
+    "name": "Mirrorless Camera",
     "category": "Camera",
-    "price": 2499.0,
+    "price": 799.0,
     "image": "camera6.jpg",
-    "description": "Professional medium format camera with 50MP sensor and exceptional image quality."
+    "description": "A black Sony mirrorless camera with a lens attached, viewed from an elevated angle, showcasing its top dials and part of the lens, on a blurred background."
   },
   {
-    "index": 69,
+    "index": 56,
     "id": "camera_007",
-    "name": "Film Camera",
+    "name": "Action Camera",
     "category": "Camera",
-    "price": 189.99,
+    "price": 349.0,
     "image": "camera7.jpg",
-    "description": "Classic 35mm film camera with manual controls for authentic photography experience."
+    "description": "A black DSLR camera mounted on a tripod, with its screen displaying a live view of a body of water and a distant horizon, set against a blurred outdoor background with clouds."
   },
   {
-    "index": 70,
+    "index": 57,
     "id": "camera_008",
-    "name": "360-Degree Camera",
+    "name": "Compact Camera",
     "category": "Camera",
-    "price": 399.99,
+    "price": 249.0,
     "image": "camera8.jpg",
-    "description": "Compact 360-degree camera for immersive VR content and panoramic photos."
+    "description": "A black and white image of a Canon EOS 1200D DSLR camera with a lens attached, lying on a textured surface with a camera strap next to it."
   },
   {
-    "index": 71,
+    "index": 58,
     "id": "camera_009",
     "name": "Security Camera",
     "category": "Camera",
     "price": 129.99,
     "image": "camera9.jpg",
-    "description": "Wireless security camera with night vision, motion detection, and cloud storage."
+    "description": "A black DSLR camera with a lens attached, mounted on a tripod, with a picturesque background of mountains and trees under a clear sky."
   },
   {
-    "index": 72,
+    "index": 59,
     "id": "camera_010",
     "name": "Drone Camera",
     "category": "Camera",
     "price": 899.99,
     "image": "camera10.jpg",
-    "description": "Aerial drone with 4K camera, GPS stabilization, and intelligent flight modes."
+    "description": "A black DSLR camera with a wide-angle lens, bearing the \"Canon\" brand name, resting on a dark, textured surface."
+  },
+  {
+    "index": 60,
+    "id": "shoes_001",
+    "name": "Classic Sneakers",
+    "category": "Shoes",
+    "price": 75.0,
+    "image": "shoe1.jpg",
+    "description": "A pair of white and grey athletic shoes with visible stitching and a white sole, presented on a minimalist white background."
+  },
+  {
+    "index": 61,
+    "id": "shoes_002",
+    "name": "Running Shoes",
+    "category": "Shoes",
+    "price": 120.0,
+    "image": "shoe2.jpg",
+    "description": "A single blue and white athletic shoe with intricate mesh patterns and a white sole, presented against a white background."
+  },
+  {
+    "index": 62,
+    "id": "shoes_003",
+    "name": "Casual Canvas Shoes",
+    "category": "Shoes",
+    "price": 55.0,
+    "image": "shoe3.jpg",
+    "description": "A pair of blue canvas sneakers with white laces and white soles, one shoe slightly in front of the other, on a light background."
+  },
+  {
+    "index": 63,
+    "id": "shoes_004",
+    "name": "High-Top Sneakers",
+    "category": "Shoes",
+    "price": 89.0,
+    "image": "shoe4.jpg",
+    "description": "A pair of grey and yellow knit high-top sneakers with white laces, with one shoe untied, against a dark grey background."
+  },
+  {
+    "index": 64,
+    "id": "shoes_005",
+    "name": "Casual Sneakers",
+    "category": "Shoes",
+    "price": 65.0,
+    "image": "shoe5.jpg",
+    "description": "A pair of yellow canvas slip-on shoes with white laces and white soles, seen from above on a dark background."
+  },
+  {
+    "index": 65,
+    "id": "shoes_006",
+    "name": "Basketball Shoes",
+    "category": "Shoes",
+    "price": 145.0,
+    "image": "shoe6.jpg",
+    "description": "Pair of white athletic shoes with mesh panels and visible lacing, placed on a clean white background."
+  },
+  {
+    "index": 66,
+    "id": "shoes_007",
+    "name": "Dress Shoes",
+    "category": "Shoes",
+    "price": 180.0,
+    "image": "shoe7.jpg",
+    "description": "Close-up of a black athletic shoe with three striped logo and a white sole, featuring a textured design on the midsole."
+  },
+  {
+    "index": 67,
+    "id": "shoes_008",
+    "name": "Trail Running Shoes",
+    "category": "Shoes",
+    "price": 135.0,
+    "image": "shoe8.jpg",
+    "description": "Pair of vibrant blue and neon green running shoes with black soles, featuring a prominent brand swoosh on the side, against a bright green background."
+  },
+  {
+    "index": 68,
+    "id": "shoes_009",
+    "name": "Slip-On Loafers",
+    "category": "Shoes",
+    "price": 75.0,
+    "image": "shoe9.jpg",
+    "description": "Pair of black suede sneakers with white stripes and white laces, featuring a light grey sole, worn with cuffed blue jeans against a brick wall."
+  },
+  {
+    "index": 69,
+    "id": "shoes_010",
+    "name": "Waterproof Boots",
+    "category": "Shoes",
+    "price": 165.0,
+    "image": "shoe10.jpg",
+    "description": "Pair of white athletic shoes with mesh panels and visible lacing, placed on a clean white background."
+  },
+  {
+    "index": 70,
+    "id": "shoes_011",
+    "name": "Tennis Shoes",
+    "category": "Shoes",
+    "price": 105.0,
+    "image": "shoe11.jpg",
+    "description": "Close-up of a foot wearing a dark red and orange knitted athletic shoe with a prominent white brand swoosh and a translucent air sole unit, resting on a graffiti-covered surface."
+  },
+  {
+    "index": 71,
+    "id": "shoes_012",
+    "name": "Minimalist Running Shoes",
+    "category": "Shoes",
+    "price": 98.0,
+    "image": "shoe12.jpg",
+    "description": "Pair of classic red canvas sneakers with white laces, white toe caps, and white rubber soles with black stripes, set on a plain surface."
+  },
+  {
+    "index": 72,
+    "id": "shoes_013",
+    "name": "High-Top Sneakers",
+    "category": "Shoes",
+    "price": 89.0,
+    "image": "shoe13.jpg",
+    "description": "Pair of modern athletic shoes with grey and white uppers, black laces, and vibrant yellow and pink accents on the soles, appearing to float against a light background."
   }
 ]

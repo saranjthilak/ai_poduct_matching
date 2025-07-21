@@ -44,4 +44,10 @@ class FaissVectorEngine:
             query_embedding = query_embedding[np.newaxis, :]
         faiss.normalize_L2(query_embedding)
         distances, indices = self.index.search(query_embedding, top_k)
-        return [self.products[i] for i in indices[0]]
+
+        results = []
+        for dist, idx in zip(distances[0], indices[0]):
+            product = self.products[idx].copy()
+            product["score"] = float(dist)
+            results.append(product)
+        return results

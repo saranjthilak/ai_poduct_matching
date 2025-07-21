@@ -6,15 +6,25 @@ from dotenv import load_dotenv
 from utils.embedding_utils import ClipEmbedder
 from vector_db.engine import FaissVectorEngine
 from mongo_store.database import MongoDB
-import requests
+from sentence_transformers import SentenceTransformer
 import datetime
 import traceback
 
+# Triton client
+import tritonclient.http as httpclient
+from tritonclient.utils import np_to_triton_dtype
+
 load_dotenv()
 
-TRITON_VISION_URL = os.getenv("TRITON_VISION_URL")
-FAISS_INDEX_PATH = os.getenv("FAISS_INDEX_PATH", "vector_db/product_index.faiss")
+TRITON_HTTP_URL = os.getenv("TRITON_HTTP_URL", "localhost:8000")
 TRITON_MODEL_NAME = os.getenv("TRITON_MODEL_NAME", "clip_vision")
+TRITON_INPUT_NAME = "input_image"
+TRITON_OUTPUT_NAME = "image_features"
+
+FAISS_INDEX_PATH = os.getenv("FAISS_INDEX_PATH", "vector_db/product_index.faiss")
+
+# Initialize Triton client
+triton_client = httpclient.InferenceServerClient(url=TRITON_HTTP_URL)
 
 def preprocess_image(image: Image.Image) -> np.ndarray:
     image = image.resize((224, 224))
@@ -24,23 +34,17 @@ def preprocess_image(image: Image.Image) -> np.ndarray:
     return image
 
 def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
-    print(f"[🔁] Sending image to Triton Inference Server at {TRITON_VISION_URL}...")
-    payload = {
-        "inputs": [
-            {
-                "name": "input_image",
-                "shape": list(image_tensor.shape),
-                "datatype": "FP32",
-                "data": image_tensor.flatten().tolist()
-            }
-        ],
-        "outputs": [{"name": "image_features"}]
-    }
-    response = requests.post(TRITON_VISION_URL, json=payload)
-    response.raise_for_status()
-    result = response.json()
-    embedding_data = result["outputs"][0]["data"]
-    return np.array(embedding_data, dtype=np.float32).reshape((1, -1))
+    inputs = [
+        httpclient.InferInput(TRITON_INPUT_NAME, image_tensor.shape, np_to_triton_dtype(image_tensor.dtype))
+    ]
+    inputs[0].set_data_from_numpy(image_tensor)
+
+    outputs = [httpclient.InferRequestedOutput(TRITON_OUTPUT_NAME)]
+
+    response = triton_client.infer(model_name=TRITON_MODEL_NAME, inputs=inputs, outputs=outputs)
+
+    result = response.as_numpy(TRITON_OUTPUT_NAME)
+    return result.astype(np.float32)
 
 def log_event(level: str, message: str, metadata: dict = None):
     DB.db["pipeline_logs"].insert_one({
@@ -50,27 +54,36 @@ def log_event(level: str, message: str, metadata: dict = None):
         "metadata": metadata or {}
     })
 
-# --- Initialize resources globally ---
-
+# Load product metadata
 with open("sample_data/products.json") as f:
     PRODUCTS = json.load(f)
 
-EMBEDDINGS = np.load("sample_data/embeddings.npy").astype(np.float32)
+# Load combined embeddings used during indexing — must be combined (image + text)
+EMBEDDINGS = np.load("sample_data/combined_embeddings.npy").astype(np.float32)
 
+# Initialize FAISS engine with combined embedding dimension (e.g., 1024)
 ENGINE = FaissVectorEngine(dim=EMBEDDINGS.shape[1])
 ENGINE.index_data(EMBEDDINGS, PRODUCTS)
 
+# Initialize MongoDB connection and reindex products
 DB = MongoDB()
 if not DB.is_connected():
     raise ConnectionError("MongoDB connection failed.")
 
-# Ensure a clean slate for testing/demo purposes
 DB.products.delete_many({})
 DB.insert_products(PRODUCTS)
 
-def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
+# Initialize local fallback models
+clip_embedder = ClipEmbedder()
+text_embedder = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Get text embedding dimension for zero-padding if needed
+text_dim = text_embedder.get_sentence_embedding_dimension()
+
+def run_matching_pipeline(input_image: Image.Image = None, input_text: str = "", top_k: int = 5):
     log_event("INFO", "🔄 Matching pipeline started")
 
+    # Use default image if none provided
     if input_image is None:
         query_img_path = os.path.join("sample_data/images", PRODUCTS[0]["image"])
         query_img = Image.open(query_img_path).convert("RGB")
@@ -79,25 +92,60 @@ def run_matching_pipeline(input_image: Image.Image = None, top_k: int = 5):
 
     try:
         image_tensor = preprocess_image(query_img)
-        query_embedding = infer_with_triton(image_tensor)
-        print("[✅] Triton inference succeeded.")
+        image_embedding = infer_with_triton(image_tensor)
         log_event("INFO", "✅ Triton inference succeeded")
     except Exception as e:
         error_msg = str(e)
-        print(f"[⚠️] Triton inference failed: {error_msg}")
-        print("[🧠] Falling back to local ClipEmbedder...")
         log_event("ERROR", "❌ Triton inference failed, using fallback", {
             "error": error_msg,
             "traceback": traceback.format_exc()
         })
-        embedder = ClipEmbedder()
-        query_embedding = embedder.encode_image(query_img).astype(np.float32)
+        image_embedding = clip_embedder.encode_image(query_img).astype(np.float32)
 
-    top_matches = ENGINE.search(query_embedding, top_k=top_k)
+    # Ensure image_embedding is 1D vector
+    image_embedding = image_embedding.flatten()
+
+    if input_text:
+        text_embedding = text_embedder.encode(input_text, convert_to_numpy=True).astype(np.float32)
+    else:
+        text_embedding = np.zeros((0,), dtype=np.float32)  # Start empty, will pad if needed
+
+    expected_dim = EMBEDDINGS.shape[1]
+
+    img_emb_len = image_embedding.shape[0]
+    txt_emb_len = text_embedding.shape[0]
+
+    # Calculate needed text embedding length to match expected dimension
+    needed_text_len = expected_dim - img_emb_len
+
+    if needed_text_len < 0:
+        raise ValueError(
+            f"Image embedding length {img_emb_len} exceeds expected total embedding dimension {expected_dim}. "
+            "Check your Triton model output size and FAISS index dimension."
+        )
+
+    # Adjust text embedding length by padding or truncating
+    if txt_emb_len < needed_text_len:
+        text_embedding = np.pad(text_embedding, (0, needed_text_len - txt_emb_len), mode='constant')
+    else:
+        text_embedding = text_embedding[:needed_text_len]
+
+    # Final combined embedding
+    combined_embedding = np.concatenate([image_embedding, text_embedding])
+
+    # Verify final combined embedding shape matches expected FAISS dim
+    if combined_embedding.shape[0] != expected_dim:
+        raise ValueError(
+            f"Combined embedding dimension {combined_embedding.shape[0]} does not match expected {expected_dim}"
+        )
+
+    # Search in FAISS index
+    top_matches = ENGINE.search(combined_embedding.reshape(1, -1), top_k=top_k)
 
     result_log = [{"name": m.get("name"), "score": m.get("score", None)} for m in top_matches]
     log_event("INFO", "✅ Matching complete", {"top_k": top_k, "results": result_log})
 
+    # Sanitize output
     sanitized = []
     for m in top_matches:
         sanitized.append({

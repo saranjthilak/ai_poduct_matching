@@ -12,7 +12,7 @@ fastapi = ">=0.115.2,<1.0"
 pymongo = "^4.13"
 numpy = "^1.24"
 faiss-cpu = "1.7.4"  # pin exact stable release
-tritonclient = {version = "^2.59.0", extras = ["grpc"]}
+tritonclient = {extras = ["http"], version = "^2.59.0"}
 gradio = "5.27.0"
 transformers = "^4.41.0"
 python-dotenv = "^1.1.1"
