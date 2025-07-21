@@ -25,8 +25,9 @@ for product in products:
     # Get image embedding (should be shape (512,))
     image_embedding = image_embedder.embed_image(image)
 
-    # Get text embedding for product name (returns a list of embeddings)
-    text_embedding = text_embedder.embed_text([product.get("name", "")])
+    # Use description if available, otherwise fallback to name
+    text_input = product.get("description") or product.get("name", "")
+    text_embedding = text_embedder.embed_text([text_input])
 
     if image_embedding is None or text_embedding is None or len(text_embedding) == 0:
         print(f"⚠️ Skipping product {product.get('name')} due to empty embedding.")
