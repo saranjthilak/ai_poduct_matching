@@ -167,9 +167,3 @@ def run_matching_pipeline(input_image: Image.Image = None, input_text: str = "",
         })
 
     return sanitized
-
-if __name__ == "__main__":
-    print("🔍 Running product matching pipeline...")
-    # Example: run with no input to test default behavior
-    results = run_matching_pipeline()
-    print(results)
