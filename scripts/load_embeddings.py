@@ -1,47 +1,97 @@
-from PIL import Image
-import numpy as np
-import json
 import os
+import json
+import numpy as np
+from PIL import Image
+from dotenv import load_dotenv
+from vector_db.engine import FaissVectorEngine
+import tritonclient.http as httpclient
+from tritonclient.utils import np_to_triton_dtype
 
-from triton_clients.clip_text_embedder import TritonCLIPTextEmbedder
-from triton_clients.clip_image_embedder import TritonCLIPImageEmbedder
+from transformers import CLIPProcessor, CLIPModel
+import torch
 
-# Initialize Triton clients with URL and model names
-text_embedder = TritonCLIPTextEmbedder(url="localhost:8000", model_name="clip_text")
-image_embedder = TritonCLIPImageEmbedder(url="localhost:8000", model_name="clip_vision")
+load_dotenv()
 
-image_dir = "sample_data/images"
+TRITON_HTTP_URL = os.getenv("TRITON_HTTP_URL", "localhost:8000")
+TRITON_MODEL_NAME = os.getenv("TRITON_MODEL_NAME", "clip_vision")
+TRITON_INPUT_NAME = "input_image"
+TRITON_OUTPUT_NAME = "image_features"
 
-# Load product metadata
-with open("sample_data/products.json") as f:
-    products = json.load(f)
+DATA_DIR = "sample_data/images"
+PRODUCTS_META_PATH = "vector_db/products.json"
+FAISS_COMBINED_INDEX_PATH = "vector_db/combined_index.faiss"
+FAISS_TEXT_ONLY_INDEX_PATH = "vector_db/text_only_index.faiss"
 
-embeddings = []
+# Initialize Triton client
+triton_client = httpclient.InferenceServerClient(url=TRITON_HTTP_URL)
 
-for product in products:
-    image_path = os.path.join(image_dir, product["image"])
-    image = Image.open(image_path).convert("RGB")
+# Initialize CLIP text model and processor from Hugging Face
+clip_text_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+clip_text_model.eval()
 
-    # Get image embedding (should be shape (512,))
-    image_embedding = image_embedder.embed_image(image)
+def preprocess_image(image: Image.Image) -> np.ndarray:
+    image = image.resize((224, 224))
+    image = np.asarray(image).astype(np.float32) / 255.0
+    image = image.transpose(2, 0, 1)  # HWC → CHW
+    image = np.expand_dims(image, axis=0)  # (1, 3, 224, 224)
+    return image
 
-    # Use description if available, otherwise fallback to name
-    text_input = product.get("description") or product.get("name", "")
-    text_embedding = text_embedder.embed_text([text_input])
+def infer_with_triton(image_tensor: np.ndarray) -> np.ndarray:
+    inputs = [
+        httpclient.InferInput(TRITON_INPUT_NAME, image_tensor.shape, np_to_triton_dtype(image_tensor.dtype))
+    ]
+    inputs[0].set_data_from_numpy(image_tensor)
+    outputs = [httpclient.InferRequestedOutput(TRITON_OUTPUT_NAME)]
+    response = triton_client.infer(model_name=TRITON_MODEL_NAME, inputs=inputs, outputs=outputs)
+    result = response.as_numpy(TRITON_OUTPUT_NAME)
+    return result.astype(np.float32)
 
-    if image_embedding is None or text_embedding is None or len(text_embedding) == 0:
-        print(f"⚠️ Skipping product {product.get('name')} due to empty embedding.")
-        continue
+def get_clip_text_embedding(text: str) -> np.ndarray:
+    inputs = clip_processor(text=[text], return_tensors="pt", padding=True)
+    with torch.no_grad():
+        outputs = clip_text_model.get_text_features(**inputs)
+    emb = outputs[0].cpu().numpy()
+    return emb.astype(np.float32)
 
-    # text_embedding is a list; take first element (512-dim)
-    combined = np.concatenate([image_embedding, text_embedding[0]])
+def main():
+    with open(PRODUCTS_META_PATH, "r", encoding="utf-8") as f:
+        products = json.load(f)
 
-    embeddings.append(combined)
+    combined_embeddings = []
+    text_only_embeddings = []
 
-embeddings = np.array(embeddings, dtype=np.float32)
-print(f"Combined embeddings shape: {embeddings.shape} (should be [num_products, 1024])")
+    for prod in products:
+        img_path = os.path.join(DATA_DIR, prod["image"])
+        image = Image.open(img_path).convert("RGB")
 
-# Save combined embeddings for indexing and search
-np.save("sample_data/combined_embeddings.npy", embeddings)
+        image_tensor = preprocess_image(image)
+        image_embedding = infer_with_triton(image_tensor).flatten()  # expected shape: (512,)
 
-print(f"✅ Saved {len(embeddings)} combined embeddings to sample_data/combined_embeddings.npy")
+        text_embedding = get_clip_text_embedding(prod["description"]).flatten()  # expected shape: (512,)
+
+        combined_embeddings.append(np.concatenate([image_embedding, text_embedding]))  # (1024,)
+        text_only_embeddings.append(text_embedding)
+
+    combined_embeddings = np.array(combined_embeddings, dtype=np.float32)
+    text_only_embeddings = np.array(text_only_embeddings, dtype=np.float32)
+
+    print(f"Combined embeddings shape: {combined_embeddings.shape} (should be [num_products, 1024])")
+    print(f"Text-only embeddings shape: {text_only_embeddings.shape} (should be [num_products, 512])")
+
+    engine = FaissVectorEngine(
+        dim_combined=combined_embeddings.shape[1],  # 1024
+        dim_text=text_only_embeddings.shape[1],    # 512
+        index_path_combined=FAISS_COMBINED_INDEX_PATH,
+        index_path_text=FAISS_TEXT_ONLY_INDEX_PATH,
+        meta_path=PRODUCTS_META_PATH,
+    )
+
+    engine.index_data(
+        embeddings_combined=combined_embeddings,
+        embeddings_text=text_only_embeddings,
+        products=products,
+    )
+
+if __name__ == "__main__":
+    main()
