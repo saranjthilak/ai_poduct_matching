@@ -128,7 +128,6 @@
   {
     "index": 14,
     "id": "lens_005",
-    "name": "Macro Lens 100mm",
     "category": "Lens",
     "price": 450.00,
     "image": "lens5.jpg",
@@ -655,5 +654,248 @@
     "price": 89.00,
     "image": "shoe13.jpg",
     "description": "Pair of modern athletic shoes with grey and white uppers, black laces, and vibrant yellow and pink accents on the soles, appearing to float against a light background."
+  },
+  {
+    "index": 73,
+    "id": "watch_011",
+    "name": "Skeleton Dial Watch",
+    "category": "Watch",
+    "price": 650.00,
+    "image": "watch11.jpg",
+    "description": "A close-up, black and white image of a mechanical watch with a skeleton dial, revealing intricate gears and mechanisms. The watch face features a prominent balance wheel and elegant, ornate engravings."
+  },
+  {
+    "index": 74,
+    "id": "watch_012",
+    "name": "Chronograph Watch",
+    "category": "Watch",
+    "price": 220.00,
+    "image": "watch12.jpg",
+    "description": "A silver-tone chronograph watch with a black dial and three subdials, featuring white hour markers and hands with red accents. The watch has a tachymeter bezel and is resting on a textured concrete surface with a blurred natural background."
+  },
+  {
+    "index": 75,
+    "id": "watch_013",
+    "name": "Eco-Drive Watch",
+    "category": "Watch",
+    "price": 180.00,
+    "image": "watch13.jpg",
+    "description": "A Citizen Eco-Drive watch with a stainless steel bracelet and a black patterned dial. It features silver-tone hour markers and hands, with 'CITIZEN Eco-Drive SAPPHIRE WR 100' printed on the dial. The watch is displayed on a grey watch cushion."
+  },
+  {
+    "index": 76,
+    "id": "watch_014",
+    "name": "G-Shock Watch",
+    "category": "Watch",
+    "price": 140.00,
+    "image": "watch14.jpg",
+    "description": "A rugged black G-Shock watch with orange accents on the dial and bezel. It features both analog and digital time displays, and is resting on a dark grey fabric surface."
+  },
+  {
+    "index": 77,
+    "id": "watch_015",
+    "name": "Michael Kors Chronograph Watch",
+    "category": "Watch",
+    "price": 250.00,
+    "image": "watch15.jpg",
+    "description": "A silver-tone Michael Kors chronograph watch with a black dial and three subdials. It features Roman numeral XII and stick hour markers. The watch is being held and has blurred orange and teal lights in the background."
+  },
+  {
+    "index": 78,
+    "id": "watch_016",
+    "name": "Fossil Chronograph Watch",
+    "category": "Watch",
+    "price": 160.00,
+    "image": "watch16.jpg",
+    "description": "A black Fossil chronograph watch with a black dial and three subdials. It features white hour markers and hands with red accents. The watch is positioned on a reflective surface, creating a mirror image below it, with a blurred warm-toned background."
+  },
+  {
+    "index": 79,
+    "id": "watch_017",
+    "name": "Solar System Watch",
+    "category": "Watch",
+    "price": 95.00,
+    "image": "watch17.jpg",
+    "description": "A gold-tone watch with a unique black dial depicting the solar system, with planets orbiting the sun as hour markers. It has a white leather strap and is being worn on a person's wrist."
+  },
+  {
+    "index": 80,
+    "id": "laptop_011",
+    "name": "Everyday Use Laptop",
+    "category": "Laptop",
+    "price": 799.00,
+    "image": "laptop11.jpg",
+    "description": "A silver Dell laptop with a white screen displaying a pineapple wearing sunglasses, placed on a light wooden desk next to a potted plant, eyeglasses, and a smartphone."
+  },
+  {
+    "index": 81,
+    "id": "laptop_012",
+    "name": "Creative Professional Laptop",
+    "category": "Laptop",
+    "price": 1399.00,
+    "image": "laptop12.jpg",
+    "description": "A silver laptop with a blank white screen, positioned on a light wooden table next to a graphic tablet, a white cup of coffee, and a small green plant, with a blurred wooden deck in the background."
+  },
+  {
+    "index": 82,
+    "id": "laptop_013",
+    "name": "Multimedia Laptop",
+    "category": "Laptop",
+    "price": 1100.00,
+    "image": "laptop13.jpg",
+    "description": "A large, dark grey laptop with a website displaying high-quality images open on its screen, placed on a wooden desk next to a graphics tablet and pen."
+  },
+  {
+    "index": 83,
+    "id": "laptop_014",
+    "name": "Compact Laptop",
+    "category": "Laptop",
+    "price": 850.00,
+    "image": "laptop14.jpg",
+    "description": "An overhead shot of a silver laptop with a blank screen, positioned next to a white pot with orange decorative balls and a black artificial plant, on a clean white background."
+  },
+  {
+    "index": 84,
+    "id": "laptop_015",
+    "name": "Productivity Laptop",
+    "category": "Laptop",
+    "price": 950.00,
+    "image": "laptop15.jpg",
+    "description": "A close-up of a person's hands typing on a silver laptop with a blank white screen, set in a bright room with a blurred reflection of plants in the background."
+  },
+  {
+    "index": 85,
+    "id": "laptop_016",
+    "name": "Student Laptop",
+    "category": "Laptop",
+    "price": 600.00,
+    "image": "laptop16.jpg",
+    "description": "An overhead shot of a silver laptop, a white coffee cup, a yellow pencil, a yellow sticky note, and crumpled yellow papers, all on a white surface with a subtle light flare."
+  },
+  {
+    "index": 86,
+    "id": "laptop_017",
+    "name": "Minimalist Setup Laptop",
+    "category": "Laptop",
+    "price": 1150.00,
+    "image": "laptop17.jpg",
+    "description": "A black laptop with a blank white screen centered on a white desk, accompanied by a modern white lamp on the left and a stack of white books with a decorative vase on the right. Sunlight casts geometric shadows on the wall behind."
+  },
+  {
+    "index": 87,
+    "id": "laptop_018",
+    "name": "Home Office Laptop",
+    "category": "Laptop",
+    "price": 1050.00,
+    "image": "laptop18.jpg",
+    "description": "A silver laptop displaying a desktop interface with various icons, placed on a dark wooden surface next to a white wireless mouse and a dark mug with white contents. The background is dimly lit and blurred."
+  },
+  {
+    "index": 88,
+    "id": "laptop_019",
+    "name": "Living Room Laptop",
+    "category": "Laptop",
+    "price": 900.00,
+    "image": "laptop19.jpg",
+    "description": "A silver laptop with a blank white screen placed on a round, dark wooden coffee table in a living room setting. A brown leather sofa with yellow cushions and an abstract painting are visible in the blurred background."
+  },
+  {
+    "index": 89,
+    "id": "laptop_020",
+    "name": "Work From Home Laptop",
+    "category": "Laptop",
+    "price": 1200.00,
+    "image": "laptop20.jpg",
+    "description": "A person's hands are typing on a silver laptop, which is open on a light wooden desk, with a blurred office or home background featuring a window and a cup."
+  },
+  {
+    "index": 90,
+    "id": "headphones_011",
+    "name": "JBL On-Ear Headphones",
+    "category": "Headphones",
+    "price": 99.00,
+    "image": "headphones11.jpg",
+    "description": "A pair of black JBL on-ear headphones with the JBL logo prominent on the earcup, resting on a black bag with a white Nike logo. A pair of black sunglasses are also on the bag, all in a dimly lit setting."
+  },
+  {
+    "index": 91,
+    "id": "headphones_012",
+    "name": "Workstation Headphones",
+    "category": "Headphones",
+    "price": 130.00,
+    "image": "headphones12.jpg",
+    "description": "A pair of black over-ear headphones placed on a white desk next to a silver laptop, a stack of notebooks, a pen, and a smartphone. A person is partially visible in the background, reaching for the phone."
+  },
+  {
+    "index": 92,
+    "id": "headphones_013",
+    "name": "JVC Over-Ear Headphones",
+    "category": "Headphones",
+    "price": 75.00,
+    "image": "headphones13.jpg",
+    "description": "A close-up of a black JVC over-ear headphone earcup with the 'JVC' logo clearly visible, resting on a white surface with a blurred black cable extending from it."
+  },
+  {
+    "index": 93,
+    "id": "headphones_014",
+    "name": "Bose Noise-Cancelling Headphones",
+    "category": "Headphones",
+    "price": 279.00,
+    "image": "headphones14.jpg",
+    "description": "A pair of silver Bose over-ear headphones with the 'BOSE' logo on the earcup and visible control buttons, resting on a white and red patterned fabric surface."
+  },
+  {
+    "index": 94,
+    "id": "headphones_015",
+    "name": "White Wireless Headphones",
+    "category": "Headphones",
+    "price": 110.00,
+    "image": "headphones15.jpg",
+    "description": "A pair of white over-ear wireless headphones with soft earcups, isolated on a white background."
+  },
+  {
+    "index": 95,
+    "id": "headphones_016",
+    "name": "Harry Potter Headphones Set",
+    "category": "Headphones",
+    "price": 85.00,
+    "image": "headphones16.jpg",
+    "description": "A black wireless over-ear headphone set is placed beside a German edition of 'Harry Potter und der Stein der Weisen' (Harry Potter and the Sorcerer's Stone) book, a small globe, and fairy lights on a white surface."
+  },
+  {
+    "index": 96,
+    "id": "headphones_017",
+    "name": "Classic Black On-Ear Headphones",
+    "category": "Headphones",
+    "price": 60.00,
+    "image": "headphones17.jpg",
+    "description": "A pair of black on-ear headphones with textured earcups and a thin metal headband, accompanied by a tangled black cable, all laid out on a dark, textured surface."
+  },
+  {
+    "index": 97,
+    "id": "headphones_018",
+    "name": "Sony On-Ear Headphones",
+    "category": "Headphones",
+    "price": 90.00,
+    "image": "headphones18.jpg",
+    "description": "A white Sony on-ear headphone earcup with the 'SONY' logo, resting on the silver keyboard of a laptop with a black screen. The background is dark and blurred."
+  },
+  {
+    "index": 98,
+    "id": "headphones_019",
+    "name": "Marshall Monitor Headphones",
+    "category": "Headphones",
+    "price": 179.00,
+    "image": "headphones19.jpg",
+    "description": "A pair of black Marshall over-ear headphones with a coiled audio cable, placed on an open calendar or planner. A pair of stylish eyeglasses with tortoise-shell frames rests next to the headphones. The background is a blurred office setting."
+  },
+  {
+    "index": 99,
+    "id": "headphones_020",
+    "name": "Studio Recording Headphones",
+    "category": "Headphones",
+    "price": 220.00,
+    "image": "headphones20.jpg",
+    "description": "A large, professional studio microphone with a silver mesh grille, mounted on a stand, with a pair of black over-ear headphones draped around it. The setting appears to be a recording studio with sound-dampening foam on the walls."
   }
 ]
