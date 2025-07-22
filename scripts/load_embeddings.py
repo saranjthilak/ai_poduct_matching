@@ -9,6 +9,7 @@ from tritonclient.utils import np_to_triton_dtype
 
 from transformers import CLIPProcessor, CLIPModel
 import torch
+from pymongo import MongoClient
 
 load_dotenv()
 
@@ -18,7 +19,6 @@ TRITON_INPUT_NAME = "input_image"
 TRITON_OUTPUT_NAME = "image_features"
 
 DATA_DIR = "sample_data/images"
-PRODUCTS_META_PATH = "vector_db/products.json"
 FAISS_COMBINED_INDEX_PATH = "vector_db/combined_index.faiss"
 FAISS_TEXT_ONLY_INDEX_PATH = "vector_db/text_only_index.faiss"
 
@@ -54,9 +54,16 @@ def get_clip_text_embedding(text: str) -> np.ndarray:
     emb = outputs[0].cpu().numpy()
     return emb.astype(np.float32)
 
+def load_products_from_mongodb(db_name="productdb", collection_name="products") -> list:
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client[db_name]
+    collection = db[collection_name]
+    products = list(collection.find({}, {"_id": 0}))  # Exclude MongoDB _id field
+    print(f"✅ Loaded {len(products)} products from MongoDB ({db_name}.{collection_name})")
+    return products
+
 def main():
-    with open(PRODUCTS_META_PATH, "r", encoding="utf-8") as f:
-        products = json.load(f)
+    products = load_products_from_mongodb()
 
     combined_embeddings = []
     text_only_embeddings = []
@@ -66,9 +73,9 @@ def main():
         image = Image.open(img_path).convert("RGB")
 
         image_tensor = preprocess_image(image)
-        image_embedding = infer_with_triton(image_tensor).flatten()  # expected shape: (512,)
+        image_embedding = infer_with_triton(image_tensor).flatten()  # (512,)
 
-        text_embedding = get_clip_text_embedding(prod["description"]).flatten()  # expected shape: (512,)
+        text_embedding = get_clip_text_embedding(prod["description"]).flatten()  # (512,)
 
         combined_embeddings.append(np.concatenate([image_embedding, text_embedding]))  # (1024,)
         text_only_embeddings.append(text_embedding)
@@ -80,11 +87,11 @@ def main():
     print(f"Text-only embeddings shape: {text_only_embeddings.shape} (should be [num_products, 512])")
 
     engine = FaissVectorEngine(
-        dim_combined=combined_embeddings.shape[1],  # 1024
-        dim_text=text_only_embeddings.shape[1],    # 512
+        dim_combined=combined_embeddings.shape[1],
+        dim_text=text_only_embeddings.shape[1],
         index_path_combined=FAISS_COMBINED_INDEX_PATH,
         index_path_text=FAISS_TEXT_ONLY_INDEX_PATH,
-        meta_path=PRODUCTS_META_PATH,
+        meta_path="vector_db/products.json",  # Still saves metadata backup locally
     )
 
     engine.index_data(
