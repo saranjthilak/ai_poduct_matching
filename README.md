@@ -37,12 +37,8 @@ The repo comes with:
 
 ## 🔗 Live Demo
 
-> Optionally hosted via Gradio.
-## 🖼️ Demo Screenshot
-
 Here's how the UI looks in action:
-
-![Product Matching Demo UI](assets/demo_screenshot.png)
+https://www.loom.com/share/1e75a628ff444e8da99317bc897fb2bc?sid=0940d9c5-d1a7-493d-871f-21429d45a47f
 
 > To try locally, run:
 ```bash
